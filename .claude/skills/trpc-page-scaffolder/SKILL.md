@@ -8,7 +8,7 @@ Baseline scaffolding for any new screen, following the "no Redux" state-manageme
 
 ## Instructions
 1. Confirm the target tRPC procedure(s) already exist (or scaffold them first via the relevant router).
-2. Generate the page/component using Tailwind CSS + shadcn/ui primitives, matching the brand's warm, non-"sci-fi" visual direction (`FinalProject.md` §3).
+2. Generate the page/component using Tailwind CSS + shadcn/ui primitives, matching the brand's warm, non-"sci-fi" visual direction (`CLAUDE.md` §7).
 3. Wire data fetching through tRPC's React Query bindings — do not introduce Zustand or Redux unless a genuine cross-cutting client state need is identified first.
 4. Handle loading, error, and empty states explicitly — never leave a bare blank screen while data loads.
 5. Hand off to `accessibility-auditor` before considering the component done.

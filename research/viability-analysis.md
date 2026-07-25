@@ -2,7 +2,7 @@
 
 **Prepared for:** Meg Seidorf & Maritza Herbert
 **Date:** 2026-07-24
-**Scope:** Independent research pass on the OnRamp concept (see [../FinalProject.md](../FinalProject.md)), using live web research on named comparables (Upskillist, Sana Labs) and the broader AI-adoption/skills-gap LMS market.
+**Scope:** Independent research pass on the OnRamp concept (see [CLAUDE.md §1](../CLAUDE.md) and [PRD.md](PRD.md)), using live web research on named comparables (Upskillist, Sana Labs) and the broader AI-adoption/skills-gap LMS market.
 
 **Bottom line up front:** the class deliverable is solid and buildable as scoped. The commercial pitch has one real fatal-flaw candidate — the "gap-mapping engine" is not a novel feature, it's a mature, actively-marketed capability at multiple large incumbents — plus a hard external dependency (LinkedIn Learning API access) that isn't fully in your control. Neither kills the project. Both need to be addressed head-on in the pitch rather than glossed over. Details below.
 

@@ -19,7 +19,7 @@ Treat that claim as something you protect, not just implement.
 Read `CLAUDE.md` §4 and §7 before any change here — the rule that a
 low-confidence grading result must route to `needs_review`, never silently
 to `failed`, is stated as an absolute, tied directly to the target user's
-fear of public failure (`FinalProject.md` §1-§2). Read
+fear of public failure (`CLAUDE.md` §7, avatar/diary arc). Read
 `research/certification-strategy.md` §2 for why completion-based tracking
 is explicitly not an acceptable substitute for what you're building.
 

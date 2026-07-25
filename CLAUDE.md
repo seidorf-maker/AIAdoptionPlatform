@@ -24,7 +24,7 @@ Key architectural decisions (don't relitigate without reading the source doc fir
 - **No Redux** — server state via tRPC + React Query; local state via `useState`/Zustand only if truly cross-cutting.
 - **Certificates are self-issued for MVP** (unique verification URL + QR code in Supabase Storage) — Credly/Accredible are deferred, quote-based, over budget. `certifications` table is the permanent source of truth regardless of future vendor.
 
-Coding standards (forward-looking — no app code exists yet):
+Coding standards (partially in effect — see §3 for what's actually built vs. still forward-looking):
 - TypeScript strict mode; Zod schemas shared between client validation and tRPC input validation.
 - Postgres tables/columns: `snake_case`. TypeScript: `camelCase`.
 - Every tenant-scoped table gets an `org_id` column + RLS policy before any data is seeded in it — never add data first and RLS later.
@@ -34,14 +34,20 @@ Coding standards (forward-looking — no app code exists yet):
 
 **Update this section as work progresses — it should always reflect reality, not the plan.**
 
-**Built so far:** research and planning only. No application code exists yet; this is not currently a git repository.
-- `FinalProject.md` — avatar, diary entries, brand identity, original lightweight PRD (course deliverable)
-- `research/viability-analysis.md` — technical/market viability findings
-- `research/certification-strategy.md` — certification/credentialing research
-- `research/tech-stack.md` — full stack decision + cost analysis
-- `research/PRD.md` — the authoritative, developer-ready PRD
+**Built so far:**
+- Research/planning docs: `research/viability-analysis.md`, `research/certification-strategy.md`, `research/tech-stack.md`, `research/PRD.md` (authoritative spec), `research/agents.md`, `research/skills.md`, `research/roadmap.md`.
+- `.claude/skills/` — 31 build skills scaffolded (see `research/skills.md` for the full inventory and MVP-vs-deferred status per skill).
+- `.claude/agents/` — 12 subagents scaffolded and **active** in this session (meta-coordinator, orchestrator, architecture-agent, database-agent, auth-security-agent, assessment-certification-agent, integration-agent, frontend-ux-agent, testing-qa-agent, infra-devops-agent, documentation-agent, error-handling-agent). `.claude/settings.json` sets the subagent spawn depth so `orchestrator` can delegate to them.
+- **`web/` — a functional Next.js 16 (App Router, TypeScript, Tailwind) frontend prototype.** Implements the full pilot pipeline end-to-end — recommended track → courses → scenario-based assessment → grading → self-issued certificate → public verification page — but entirely against **local mock data** (`web/src/lib/mock-data.ts`). Grading is simulated client-side (a heuristic standing in for the real Claude API pipeline), never a real LLM call. No database, no auth, no tRPC, no Supabase, no real integrations exist yet — see the "not yet built" list below before assuming otherwise.
+- This is now a git repository (initialized at the project root, not just `web/`), pushed to `github.com/seidorf-maker/AIAdoptionPlatform`, `main` branch.
 
-**In progress:** nothing actively being built. Next step is implementation planning / scaffolding once Meg decides to proceed.
+**Not yet built — don't assume these exist:**
+- Any backend: no Supabase project, no Postgres schema/migrations, no RLS policies, no tRPC routers, no real Auth.
+- Real assessment grading (Anthropic API call) — currently a client-side simulation only.
+- Any live third-party integration (LinkedIn Learning, Credly, Accredible) — intentionally mocked/deferred, not started.
+- CI pipeline, Netlify deployment connection (repo is push-ready; Netlify site not yet confirmed connected — see `web/netlify.toml`, base directory should be set to `web`).
+
+**In progress:** nothing actively being built beyond the frontend prototype above. Next step per `research/roadmap.md` is Sprint Zero's real-infrastructure provisioning (Supabase/Netlify/Google OAuth accounts) — not yet started, requires Meg's direct action.
 
 **Known open decisions (not yet resolved, flag before assuming an answer):**
 - Whether assessment rubrics should be partially or fully hidden from users pre-submission (PRD §5.1 note).
@@ -69,27 +75,37 @@ Coding standards (forward-looking — no app code exists yet):
 
 **Current (actual):**
 ```
-FinalProject.md              # avatar, diary, brand identity, original PRD (course deliverable)
+README.md                    # repo orientation
 CLAUDE.md                    # this file
 research/
   viability-analysis.md      # technical + market viability research
   certification-strategy.md  # certification/credentialing research
   tech-stack.md               # stack decision, MCP servers, cost analysis
   PRD.md                       # authoritative build-ready PRD
+  agents.md                     # subagent architecture (source of truth for .claude/agents/)
+  skills.md                     # build-skill inventory (source of truth for .claude/skills/)
+  roadmap.md                    # MVP definition, milestones, Sprint Zero, launch checklist
+.claude/
+  agents/                     # 12 subagent definitions, active
+  skills/                     # 31 skill definitions
+  settings.json                # subagent spawn depth config
+  launch.json                   # dev server launch config for /run and preview tooling
+web/                          # Next.js frontend prototype — see web/README.md
+  src/app/                     # App Router pages (dashboard, track, assessment, certificate, verify)
+  src/lib/mock-data.ts          # all demo data; swap point for a real backend later
+  src/components/               # shared UI primitives
+  CLAUDE.md                     # imports ../CLAUDE.md + Next.js-version-specific AGENTS.md
 ```
 
-**Planned (not yet created — per `research/PRD.md` §4–5):**
+**Planned (not yet created — per `research/PRD.md` §4–5, needed once the backend starts):**
 ```
-src/
-  app/                        # Next.js App Router pages
-  server/
-    trpc/routers/             # tRPC procedures, grouped by domain (org, tracks, assessments, certifications...)
-    db/migrations/            # Supabase CLI-managed SQL migrations
-  components/                 # React components (shadcn/ui-based)
-.claude/rules/                 # add path-scoped conventions here if this file grows past ~200 lines
+web/src/server/
+  trpc/routers/               # tRPC procedures, grouped by domain (org, tracks, assessments, certifications...)
+  db/migrations/               # Supabase CLI-managed SQL migrations
+.claude/rules/                  # add path-scoped conventions here if this file grows past ~200 lines
 ```
 
-Naming conventions: research docs use kebab-case filenames; planned DB tables/columns use `snake_case`; planned TS files/exports use `camelCase`/`PascalCase` per standard React/TS convention.
+Naming conventions: research docs use kebab-case filenames; planned DB tables/columns use `snake_case`; TS files/exports use `camelCase`/`PascalCase` per standard React/TS convention.
 
 ## 6. External Dependencies
 
@@ -102,11 +118,9 @@ Naming conventions: research docs use kebab-case filenames; planned DB tables/co
 | Credly / Accredible | Third-party credentialing — **deferred, not integrated** | credly.com/docs/web_service_api · docs.api.accredible.com | none — not in MVP scope |
 | GitHub Actions | CI (lint/typecheck/test) | docs.github.com/en/actions | n/a |
 
-## 7. User Avatar Reminder
+## 7. User Avatar & Brand Voice
 
-**Denise Carter** — Senior Financial Analyst, Corporate Accounting, ~4,200-employee company. Full avatar: `FinalProject.md` §1.
-
-She's not resistant to AI — she's anxious about it, and has never been shown a sanctioned, role-specific starting point. She fears looking incompetent in front of colleagues more than she fears the technology itself.
+**Denise Carter** — Senior Financial Analyst, Corporate Accounting, ~4,200-employee company. She's not resistant to AI — she's anxious about it, and has never been shown a sanctioned, role-specific starting point. She fears looking incompetent in front of colleagues more than she fears the technology itself. Her arc in three moments (this is the emotional throughline every feature should serve): **before** — lying awake ashamed she doesn't already know this, no idea where she's allowed to start; **first use** — relief that something was finally built "for someone like me," a door instead of a locked one; **after** — a real credential she can name in a meeting, self-doubt quieter, not gone.
 
 **UX principles that follow directly from that, non-negotiable in any feature work:**
 - **Permission before exploration.** Every screen should feel sanctioned/approved, never like an open-ended catalog she has to guess her way through.
@@ -114,3 +128,5 @@ She's not resistant to AI — she's anxious about it, and has never been shown a
 - **Proof over participation.** A credential must mean she demonstrated something, not that she clicked through a course.
 - **No public exposure by default.** No leaderboards, no visible failure states in front of peers — this is a direct product requirement, not a style preference.
 - **Low time cost.** She evaluates everything against "I don't have time to go down a rabbit hole."
+
+**Brand voice:** mentor/guide archetype, not a tech-disruptor brand. Plain language over jargon ("let AI draft the first pass" not "leverage generative AI capabilities"). Permission-giving phrasing ("here's exactly what to use," "this is approved," "step by step"). Quietly celebratory at milestones, never gamified hype. Tagline: *"AI, for the rest of us."* Visual direction: warm neutrals + one confident accent color (see `web/src/app/globals.css` for the implemented palette) — deliberately not the cold blue/purple "AI tech" gradient cliché.

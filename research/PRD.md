@@ -3,7 +3,7 @@
 **Prepared for:** Meg Seidorf & Maritza Herbert
 **Date:** 2026-07-24
 **Status:** Draft — ready for MVP build planning
-**Builds on:** [viability-analysis.md](viability-analysis.md), [certification-strategy.md](certification-strategy.md), [tech-stack.md](tech-stack.md), and the earlier [FinalProject.md](../FinalProject.md) (avatar, diary, brand identity — condensed and operationalized here).
+**Builds on:** [viability-analysis.md](viability-analysis.md), [certification-strategy.md](certification-strategy.md), [tech-stack.md](tech-stack.md), and the avatar/brand work now folded into [CLAUDE.md §7](../CLAUDE.md).
 
 This document is written so a developer with no prior context on this project can read it once and know what to build, in what order, and why. Where a decision traces back to prior research (a competitive risk, a budget constraint, a technical gating issue), the source document is cited inline rather than re-argued.
 
@@ -15,7 +15,7 @@ This document is written so a developer with no prior context on this project ca
 
 **Primary value proposition:** Most corporate AI training either has no clear starting point for non-technical staff, or issues a completion certificate that proves someone watched a video, not that they can do the job task. OnRamp's core bet, validated against the market research in [certification-strategy.md](certification-strategy.md), is that a **competence-based certification** — a real, job-specific scenario assessment, not a quiz-and-badge — is a defensible differentiator in a market where nearly every comparable product (including LinkedIn Learning's own certificates) issues completion records instead.
 
-**Target user persona (psychographic detail):** Denise Carter, Senior Financial Analyst, Corporate Accounting, at a ~4,200-employee manufacturing company. Full demographic and empathy-map detail lives in [FinalProject.md §1](../FinalProject.md#1-problem-aware-avatar); the parts that should drive every product decision in this PRD are:
+**Target user persona (psychographic detail):** Denise Carter, Senior Financial Analyst, Corporate Accounting, at a ~4,200-employee manufacturing company. Avatar summary and brand voice live in [CLAUDE.md §7](../CLAUDE.md); the parts that should drive every product decision in this PRD are:
 
 - **Motivation:** She wants to walk into a leadership meeting and reference a specific way she used AI to solve a real problem — and be noticed for it — without having to become "the tech person."
 - **Fear:** That she's quietly becoming obsolete, that colleagues who "just get" AI will pass her by, and that asking a basic question will expose how far behind she feels.
@@ -28,7 +28,7 @@ Every P0 feature in §3 exists because it removes a specific piece of Denise's a
 
 ## 2. User Avatar Deep Dive
 
-*(Condensed from the full avatar and diary entries in [FinalProject.md](../FinalProject.md); this section focuses on what changes in the product, not narrative detail.)*
+*(Condensed from the avatar summary in [CLAUDE.md §7](../CLAUDE.md); this section focuses on what changes in the product, not narrative detail.)*
 
 **Who exactly is this for?** A conscientious, mid-career, non-technical professional in a function like accounting, finance, sales, or ops, at a company large enough to have formal L&D infrastructure and an explicit (if vague) "use AI more" expectation from leadership — but not so equipped that every employee already has a clear, role-specific AI onboarding path.
 
@@ -84,7 +84,7 @@ Priority key: **P0** = MVP-critical (pilot cannot launch without it) · **P1** =
 > As an employee, I want to see which of my role's required skills I already have covered (via connected accounts) and which are still missing, so that I don't waste time re-doing training I've already completed.
 
 - **Acceptance criteria:**
-  - UI matches the wireframe in the original PRD draft ([FinalProject.md §4.4a](../FinalProject.md)): role, connected-account status, a skill-gap card showing "already covered by" vs. "still missing."
+  - UI matches the wireframe in §4.4a below: role, connected-account status, a skill-gap card showing "already covered by" vs. "still missing."
   - For MVP, this screen is populated from **sample/seeded data**, explicitly labeled in the UI (or via demo framing, not a live OAuth flow) as illustrative — never presented as if it reflects a real, live LinkedIn Learning connection. This directly addresses the credibility risk flagged in [viability-analysis.md §4](viability-analysis.md) ("if the gap-mapping engine is demoed as if it's a live integration when it's actually mocked sample data, that's a credibility risk").
   - `integration_connections` table (see §4) records connection `status` per org/provider (`mocked` | `pending` | `connected` | `error`), so the mock-to-live transition is a data change, not a re-architecture.
 - **Technical notes/dependencies:** No live third-party API integration in MVP. A real gap-mapping engine (semantic skill-matching via pgvector, per [tech-stack.md §3](tech-stack.md)) is explicitly **out of scope for MVP** — see §7.
