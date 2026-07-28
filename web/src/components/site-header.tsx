@@ -56,8 +56,14 @@ export function SiteHeader() {
         </Link>
 
         <div className="flex items-center gap-4">
-          {/* Public marketing pages — visible regardless of auth state, and
-              not gated by proxy.ts (which only touches "/", "/login", "/app"). */}
+          {/* Public pages — visible regardless of auth state, and not gated
+              by proxy.ts (which only touches "/", "/login", "/app"). */}
+          <Link
+            href="/community"
+            className="text-sm text-muted-foreground transition hover:text-accent"
+          >
+            {t.nav.community}
+          </Link>
           <Link
             href="/about"
             className="text-sm text-muted-foreground transition hover:text-accent"

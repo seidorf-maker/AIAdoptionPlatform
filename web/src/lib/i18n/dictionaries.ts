@@ -14,10 +14,17 @@ export const en = {
   },
   nav: {
     tag: "AI, for the rest of us",
+    community: "Community",
     ourMission: "Our Mission",
     pricing: "Pricing",
     login: "Log in",
     logout: "Log out",
+  },
+  communityPage: {
+    tag: "Community",
+    heading: "Learn from people doing the work.",
+    subhead:
+      "A growing space where people compare approaches, trade what's working, and figure out the best way to do the job — together, not alone.",
   },
   login: {
     tag: "Welcome",
@@ -41,7 +48,6 @@ export const en = {
       "The real Prompt Coach and Competence Assessment, shown exactly as they work once you're signed in.",
     promptCoachTitle: "Prompt Coach",
     competenceAssessmentTitle: "Competence Assessment",
-    communityTitle: "Community",
     leaderboardTitle: "Leaderboard",
     principle1Title: "Sanctioned, not sneaky",
     principle1Body:
@@ -135,10 +141,17 @@ export const es: Dictionary = {
   },
   nav: {
     tag: "IA, para el resto de nosotros",
+    community: "Comunidad",
     ourMission: "Nuestra misión",
     pricing: "Precios",
     login: "Iniciar sesión",
     logout: "Cerrar sesión",
+  },
+  communityPage: {
+    tag: "Comunidad",
+    heading: "Aprende de quienes hacen el trabajo.",
+    subhead:
+      "Un espacio en crecimiento donde las personas comparan enfoques, comparten lo que funciona y descubren la mejor forma de hacer el trabajo — juntas, no en solitario.",
   },
   login: {
     tag: "Bienvenido",
@@ -162,7 +175,6 @@ export const es: Dictionary = {
       "El verdadero Prompt Coach y la Evaluación de Competencia, tal como funcionan una vez que iniciaste sesión.",
     promptCoachTitle: "Prompt Coach",
     competenceAssessmentTitle: "Evaluación de Competencia",
-    communityTitle: "Comunidad",
     leaderboardTitle: "Clasificación",
     principle1Title: "Autorizado, no a escondidas",
     principle1Body:
@@ -254,10 +266,17 @@ export const fr: Dictionary = {
   },
   nav: {
     tag: "L'IA, pour nous tous",
+    community: "Communauté",
     ourMission: "Notre mission",
     pricing: "Tarifs",
     login: "Se connecter",
     logout: "Se déconnecter",
+  },
+  communityPage: {
+    tag: "Communauté",
+    heading: "Apprenez de ceux qui font le travail.",
+    subhead:
+      "Un espace grandissant où chacun compare les approches, partage ce qui fonctionne et trouve la meilleure façon de faire le travail — ensemble, pas seul.",
   },
   login: {
     tag: "Bienvenue",
@@ -281,7 +300,6 @@ export const fr: Dictionary = {
       "Le vrai Prompt Coach et l'Évaluation de Compétence, présentés exactement comme ils fonctionnent une fois connecté.",
     promptCoachTitle: "Prompt Coach",
     competenceAssessmentTitle: "Évaluation de Compétence",
-    communityTitle: "Communauté",
     leaderboardTitle: "Classement",
     principle1Title: "Autorisé, pas en cachette",
     principle1Body:

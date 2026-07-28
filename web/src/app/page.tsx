@@ -3,7 +3,6 @@
 import { PrimaryLink } from "@/components/ui";
 import { PromptCoach } from "@/components/onramp/prompt-coach";
 import { CompetenceAssessment } from "@/components/onramp/competence-assessment";
-import { Community } from "@/components/onramp/community";
 import { Leaderboard } from "@/components/onramp/leaderboard";
 import { LockedOverlay } from "@/components/onramp/locked-overlay";
 import { useLocale } from "@/lib/i18n/locale-context";
@@ -49,16 +48,6 @@ export default function Home() {
           <PreviewSection title={t.landing.competenceAssessmentTitle}>
             <LockedOverlay>
               <CompetenceAssessment name="Denise Carter" mode="preview" />
-            </LockedOverlay>
-          </PreviewSection>
-
-          <PreviewSection title={t.landing.communityTitle}>
-            <LockedOverlay>
-              <Community
-                name="Denise Carter"
-                roleLabel="Senior Financial Analyst"
-                mode="preview"
-              />
             </LockedOverlay>
           </PreviewSection>
 

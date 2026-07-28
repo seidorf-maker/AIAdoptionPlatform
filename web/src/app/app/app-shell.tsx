@@ -5,10 +5,9 @@ import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { PromptCoach } from "@/components/onramp/prompt-coach";
 import { CompetenceAssessment } from "@/components/onramp/competence-assessment";
-import { Community } from "@/components/onramp/community";
 import { Leaderboard } from "@/components/onramp/leaderboard";
 
-type Tab = "coach" | "assess" | "community" | "leaderboard";
+type Tab = "coach" | "assess" | "leaderboard";
 
 export function AppShell({
   fullName,
@@ -61,12 +60,6 @@ export function AppShell({
           Competence Assessment
         </TabButton>
         <TabButton
-          active={tab === "community"}
-          onClick={() => setTab("community")}
-        >
-          Community
-        </TabButton>
-        <TabButton
           active={tab === "leaderboard"}
           onClick={() => setTab("leaderboard")}
         >
@@ -79,9 +72,6 @@ export function AppShell({
           <PromptCoach name={fullName} roleLabel={roleLabel} mode="live" />
         )}
         {tab === "assess" && <CompetenceAssessment name={fullName} mode="live" />}
-        {tab === "community" && (
-          <Community name={fullName} roleLabel={roleLabel} mode="live" />
-        )}
         {tab === "leaderboard" && (
           <Leaderboard name={fullName} roleLabel={roleLabel} mode="live" />
         )}
