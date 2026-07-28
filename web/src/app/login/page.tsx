@@ -2,37 +2,58 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Card } from "@/components/ui";
-import { login } from "@/lib/auth";
+import { createClient } from "@/lib/supabase/client";
 
+// Demo-mode login: this is presented live, so there is no real email
+// round-trip / OTP / magic link. Any typed email creates a REAL Supabase
+// session via anonymous sign-in — protected routes, persistence, and
+// sign-out genuinely work, they just aren't gated on verifying that email
+// address. See web/README.md and ../../CLAUDE.md for why this is
+// intentional in demo mode, not a shortcut that snuck in.
 export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!email.trim() || !password.trim()) return;
+    if (!email.trim() || submitting) return;
     setSubmitting(true);
-    window.setTimeout(() => {
-      login();
-      router.push("/dashboard");
-    }, 500);
+    setError(null);
+
+    const supabase = createClient();
+    const { error: signInError } = await supabase.auth.signInAnonymously({
+      options: {
+        data: {
+          full_name: "Denise Carter",
+          role: "Senior Financial Analyst",
+          typed_email: email.trim(),
+        },
+      },
+    });
+
+    if (signInError) {
+      setError(signInError.message);
+      setSubmitting(false);
+      return;
+    }
+
+    router.push("/app");
+    router.refresh();
   }
 
   return (
     <div className="mx-auto max-w-sm px-6 py-16">
-      <p className="text-sm font-medium text-accent">Welcome back</p>
-      <h1 className="mt-2 text-2xl font-semibold tracking-tight">
-        Log in to OnRamp
-      </h1>
-      <p className="mt-2 text-sm text-muted-foreground">
-        This is approved, sanctioned access — sign in to see your
-        recommended track.
+      <p className="text-sm font-medium text-accent">
+        AI, for the rest of us.
       </p>
+      <h1 className="mt-2 text-2xl font-semibold tracking-tight">
+        OnRamp certifies that non-technical employees can actually do their
+        job with AI — not just that they watched a course.
+      </h1>
 
-      <Card className="mt-6">
+      <div className="mt-6 rounded-2xl border border-card-border bg-card p-6 shadow-sm">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="email" className="text-sm font-medium">
@@ -44,35 +65,23 @@ export default function LoginPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@company.com"
-              className="mt-1.5 w-full rounded-lg border border-card-border bg-background px-3 py-2 text-sm outline-none focus-visible:border-accent"
-            />
-          </div>
-          <div>
-            <label htmlFor="password" className="text-sm font-medium">
-              Password
-            </label>
-            <input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
+              autoFocus
               className="mt-1.5 w-full rounded-lg border border-card-border bg-background px-3 py-2 text-sm outline-none focus-visible:border-accent"
             />
           </div>
           <button
             type="submit"
-            disabled={!email.trim() || !password.trim() || submitting}
+            disabled={!email.trim() || submitting}
             className="w-full rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
           >
-            {submitting ? "Signing in…" : "Log In"}
+            {submitting ? "Signing in…" : "Sign In"}
           </button>
         </form>
-      </Card>
+        {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
+      </div>
 
       <p className="mt-4 text-center text-xs text-muted-foreground">
-        Demo environment — sign in with any work email to preview OnRamp as
-        our example user, Denise Carter.
+        Demo mode — any email signs you in as Denise Carter.
       </p>
     </div>
   );

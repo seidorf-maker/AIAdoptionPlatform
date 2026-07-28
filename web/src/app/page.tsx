@@ -1,6 +1,10 @@
-import { Card, PrimaryLink } from "@/components/ui";
-import { persona } from "@/lib/mock-data";
+import { PrimaryLink } from "@/components/ui";
+import { PromptCoach } from "@/components/onramp/prompt-coach";
+import { CompetenceAssessment } from "@/components/onramp/competence-assessment";
+import { LockedOverlay } from "@/components/onramp/locked-overlay";
 
+// proxy.ts redirects a signed-in visitor away from "/" to /app before this
+// ever renders, so this component only needs to handle the signed-out case.
 export default function Home() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
@@ -11,41 +15,43 @@ export default function Home() {
         AI, for the rest of us.
       </h1>
       <p className="mt-5 max-w-xl text-lg text-muted-foreground text-pretty">
-        You&apos;re not behind — you were never shown the door. OnRamp gives
-        non-technical employees a sanctioned, job-specific path into AI, and
-        a real certification that proves you can do something, not just
-        that you watched a video.
+        OnRamp certifies that non-technical employees can actually do their
+        job with AI — not just that they watched a course.
       </p>
 
-      <div className="mt-6 flex items-center gap-3 rounded-xl border border-card-border bg-muted/60 px-4 py-3 text-sm text-muted-foreground">
-        <span>
-          <span className="font-semibold text-foreground">67%</span> of
-          employees already use AI at work, but only{" "}
-          <span className="font-semibold text-foreground">33%</span> of
-          companies train them on it — that gap is what OnRamp closes.
-        </span>
-      </div>
-
       <div className="mt-6">
-        <PrimaryLink href="/login">Log in</PrimaryLink>
+        <PrimaryLink href="/login">Log In</PrimaryLink>
       </div>
 
-      <Card className="mt-10">
+      <div className="mt-14">
         <p className="text-sm font-medium text-muted-foreground">
-          Who this is built for
+          See it in action
         </p>
-        <p className="mt-1 text-lg font-medium">
-          {persona.fullName}, {persona.jobTitle}
+        <p className="mt-1 mb-6 text-sm text-muted-foreground">
+          The real Prompt Coach and Competence Assessment, shown exactly as
+          they work once you&apos;re signed in.
         </p>
-        <p className="mt-2 text-sm text-muted-foreground">
-          {persona.department} at {persona.orgName} — one example of the
-          person OnRamp is designed around: capable, anxious about AI, and
-          never shown a sanctioned place to start. Log in above to see her
-          recommended track.
-        </p>
-      </Card>
 
-      <div className="mt-10 grid gap-4 sm:grid-cols-3">
+        <div className="space-y-8">
+          <PreviewSection title="Prompt Coach">
+            <LockedOverlay>
+              <PromptCoach
+                name="Denise Carter"
+                roleLabel="Senior Financial Analyst"
+                mode="preview"
+              />
+            </LockedOverlay>
+          </PreviewSection>
+
+          <PreviewSection title="Competence Assessment">
+            <LockedOverlay>
+              <CompetenceAssessment name="Denise Carter" mode="preview" />
+            </LockedOverlay>
+          </PreviewSection>
+        </div>
+      </div>
+
+      <div className="mt-14 grid gap-4 sm:grid-cols-3">
         <Principle
           title="Sanctioned, not sneaky"
           body="Every screen is approved and specific to your role — never an open catalog to guess your way through."
@@ -59,6 +65,21 @@ export default function Home() {
           body="No leaderboards. An uncertain result gets a second look, never a public fail."
         />
       </div>
+    </div>
+  );
+}
+
+function PreviewSection({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <h2 className="mb-3 font-serif text-lg">{title}</h2>
+      {children}
     </div>
   );
 }

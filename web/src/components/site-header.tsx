@@ -2,15 +2,45 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { persona } from "@/lib/mock-data";
-import { isLoggedIn, logout } from "@/lib/auth";
+import { usePathname, useRouter } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
 
 export function SiteHeader() {
-  const [loggedIn, setLoggedIn] = useState<boolean | null>(null);
+  const router = useRouter();
+  const pathname = usePathname();
+  const [name, setName] = useState<string | null | undefined>(undefined);
 
   useEffect(() => {
-    setLoggedIn(isLoggedIn());
+    const supabase = createClient();
+
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      const metadata = user?.user_metadata as { full_name?: string } | undefined;
+      setName(user ? metadata?.full_name ?? "Signed in" : null);
+    });
+
+    // This header instance persists across client-side navigations (it
+    // lives in the root layout), so a one-shot getUser() on mount misses
+    // sign-in/sign-out events that happen elsewhere in the app (e.g. the
+    // Sign Out button inside /app). Subscribing keeps it in sync everywhere.
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      const metadata = session?.user.user_metadata as
+        | { full_name?: string }
+        | undefined;
+      setName(session ? metadata?.full_name ?? "Signed in" : null);
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
+
+  async function signOut() {
+    const supabase = createClient();
+    await supabase.auth.signOut();
+    setName(null);
+    router.push("/");
+    router.refresh();
+  }
 
   return (
     <header className="border-b border-card-border bg-card/60">
@@ -22,20 +52,17 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        {loggedIn === null ? null : loggedIn ? (
+        {/* /app has its own greeting + Sign Out in AppShell — avoid duplicating it here. */}
+        {pathname?.startsWith("/app") ? null : name === undefined ? null : name ? (
           <div className="flex items-center gap-4">
             <Link
-              href="/dashboard"
+              href="/app"
               className="rounded-full bg-muted px-4 py-1.5 text-sm text-foreground transition hover:bg-accent-soft"
             >
-              {persona.fullName}
+              {name}
             </Link>
             <button
-              onClick={() => {
-                logout();
-                setLoggedIn(false);
-                window.location.href = "/";
-              }}
+              onClick={signOut}
               className="text-sm text-muted-foreground underline decoration-dotted"
             >
               Log out

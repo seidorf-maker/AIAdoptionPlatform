@@ -24,6 +24,12 @@ This document is written so a developer with no prior context on this project ca
 
 Every P0 feature in §3 exists because it removes a specific piece of Denise's anxiety (permission, relevance, or proof) — features that don't map to one of those three should be treated with suspicion at scope-review time.
 
+**Market sizing (pitch context):** figures marked **[sourced]** come from public data; figures marked **[modeled]** are planning assumptions built on top of sourced inputs, not hard measurements.
+- TAM: ~20,868 U.S. companies with 500+ employees **[sourced — 2019 U.S. Census Bureau, most recent specific count found]**; realistic early capture ~1% → **~210 companies [modeled]**.
+- The cost of the status quo: 67% of employees already use AI at work, but only 33% of organizations train them on it, and only 18% have formal AI usage/security policies **[sourced — 2026 shadow-AI industry reporting]**. At enterprise L&D seat pricing (~$379.88/user/year for LinkedIn Learning Teams **[sourced]**), a 4,200-employee company spends roughly $1.6M/year on training seats; if ~60% of that isn't converting into applied skill, that's **~$960K/year in underutilized training spend at a single mid-size company [modeled, built on sourced inputs]**.
+- Opportunity: OnRamp priced below the $300–500/user/year enterprise LMS band, at **~$96/user/year [modeled]**. At ~210 target companies averaging ~2,000 enrolled employees each: **420,000 seats × $96/year ≈ $40M in annual revenue potential at full capture [modeled build-up, not a Year 1 number]**.
+- **One-line version:** *"67% of employees are already using AI at work, but only a third of companies train them on it — that gap costs a single mid-size company like Denise's roughly $960K a year in training spend that never turns into real skill. Multiply that across ~21,000 U.S. companies this size, and it's a multi-billion-dollar problem. OnRamp doesn't ask them to spend more — it makes the spend they've already made actually work."*
+
 ---
 
 ## 2. User Avatar Deep Dive

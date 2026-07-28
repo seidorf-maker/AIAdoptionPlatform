@@ -1,24 +1,41 @@
 # OnRamp — frontend prototype
 
-A functional, mock-data-only Next.js prototype of OnRamp: a role-based AI
-adoption platform for non-technical employees at mid-to-large companies.
-No backend, database, or authentication is wired up yet — every screen
-reads from `src/lib/mock-data.ts` so the whole product story (recommended
-track → courses → a real scenario-based assessment → grading → a
-verifiable certificate) can be demoed without any account setup.
+A Next.js prototype of OnRamp: a role-based AI adoption platform for
+non-technical employees at mid-to-large companies. The live-demo surface
+(`/`, `/login`, `/app` — Prompt Coach + Competence Assessment, ported from
+`onramp-demo.html`) now runs on **real Supabase auth** (anonymous sessions,
+cookie-based via `@supabase/ssr`) and can call the **real Anthropic API**
+for grading once `ANTHROPIC_API_KEY` is set locally. `/verify/[code]` is
+kept from the earlier mocked pilot-flow prototype and still reads from
+`src/lib/mock-data.ts` — no real `certifications` table exists yet.
 
 See `../research/PRD.md` for the full product spec this prototype is
 scoped from, and `../CLAUDE.md` for project-wide context.
 
 ## What's real vs. simulated here
 
-- **Real:** the Next.js app, routing, and UI — this builds and deploys as
-  a genuine working app.
-- **Simulated:** grading (a `setTimeout` + simple heuristic stands in for
-  the real Claude API pipeline in `research/PRD.md` §3.5), the LinkedIn
-  Learning connection (explicitly labeled "Demo data" in the UI, per
-  `research/viability-analysis.md`), and certificate issuance (no database
-  — the same mock certificate renders every time).
+- **Real:** the Next.js app, routing, and UI. Login (`/login`) creates a
+  genuine Supabase session via `supabase.auth.signInAnonymously()` — no
+  password is checked, but the session, `src/proxy.ts` route protection,
+  and sign-out are all real, not mocked. Prompt Coach and Competence
+  Assessment (`/app`) call the real Anthropic Messages API server-side via
+  `src/app/api/claude/route.ts` when `ANTHROPIC_API_KEY` is configured.
+- **Demo-mode by design, not a shortcut that snuck in:** any typed email
+  signs the visitor in as a fixed persona (Denise Carter, Senior Financial
+  Analyst) — there's no real email verification, so this is not
+  production auth. See `../CLAUDE.md` §4 before treating it as more than
+  a live-pitch demo mechanism.
+- **Simulated:** the `/verify/[code]` certificate page (mock data, no
+  database) and the LinkedIn Learning connection concept described in the
+  PRD (not present in this narrower demo surface at all).
+
+## Environment variables (`.env.local`)
+
+```
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+ANTHROPIC_API_KEY=       # server-only; add your own to enable live grading
+```
 
 This is a Next.js project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
