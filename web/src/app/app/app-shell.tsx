@@ -80,10 +80,10 @@ export function AppShell({
         )}
         {tab === "assess" && <CompetenceAssessment name={fullName} mode="live" />}
         {tab === "community" && (
-          <Community name={fullName} roleLabel={roleLabel} />
+          <Community name={fullName} roleLabel={roleLabel} mode="live" />
         )}
         {tab === "leaderboard" && (
-          <Leaderboard name={fullName} roleLabel={roleLabel} />
+          <Leaderboard name={fullName} roleLabel={roleLabel} mode="live" />
         )}
       </div>
     </div>

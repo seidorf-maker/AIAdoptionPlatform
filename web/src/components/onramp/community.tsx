@@ -20,12 +20,20 @@ function trackTone(track: CommunityPost["track"]): "accent" | "success" | "revie
 export function Community({
   name,
   roleLabel,
+  mode,
 }: {
   name: string;
   roleLabel: string;
+  mode: "live" | "preview";
 }) {
   const [posts, setPosts] = useState<CommunityPost[]>(INITIAL_COMMUNITY_POSTS);
-  const [openId, setOpenId] = useState<string | null>(null);
+  // Preview mode opens the first post by default so a signed-out visitor
+  // sees a filled-in example (prompt card, answers, accepted marker)
+  // rather than an empty list — same idea as Prompt Coach's preview mode
+  // pre-filling a sample task/response.
+  const [openId, setOpenId] = useState<string | null>(
+    mode === "preview" ? INITIAL_COMMUNITY_POSTS[0].id : null
+  );
   const [composerOpen, setComposerOpen] = useState(false);
 
   function addPost(title: string, track: CommunityPost["track"], body: string, promptSnippet: string) {

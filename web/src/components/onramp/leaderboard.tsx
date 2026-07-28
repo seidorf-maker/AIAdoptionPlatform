@@ -16,11 +16,16 @@ const YOUR_MOCK_STANDING = { points: 120, certificationsEarned: 1, streakWeeks: 
 export function Leaderboard({
   name,
   roleLabel,
+  mode,
 }: {
   name: string;
   roleLabel: string;
+  mode: "live" | "preview";
 }) {
-  const [optedIn, setOptedIn] = useState(false);
+  // Preview mode defaults to opted-in so a signed-out visitor immediately
+  // sees what the individual leaderboard looks like with data, rather than
+  // the empty off-state — same idea as Community defaulting to an open post.
+  const [optedIn, setOptedIn] = useState(mode === "preview");
 
   const roster: OptedInIndividual[] = optedIn
     ? [

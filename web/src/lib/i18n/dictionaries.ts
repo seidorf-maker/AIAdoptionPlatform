@@ -41,6 +41,8 @@ export const en = {
       "The real Prompt Coach and Competence Assessment, shown exactly as they work once you're signed in.",
     promptCoachTitle: "Prompt Coach",
     competenceAssessmentTitle: "Competence Assessment",
+    communityTitle: "Community",
+    leaderboardTitle: "Leaderboard",
     principle1Title: "Sanctioned, not sneaky",
     principle1Body:
       "Every screen is approved and specific to your role — never an open catalog to guess your way through.",
@@ -160,6 +162,8 @@ export const es: Dictionary = {
       "El verdadero Prompt Coach y la Evaluación de Competencia, tal como funcionan una vez que iniciaste sesión.",
     promptCoachTitle: "Prompt Coach",
     competenceAssessmentTitle: "Evaluación de Competencia",
+    communityTitle: "Comunidad",
+    leaderboardTitle: "Clasificación",
     principle1Title: "Autorizado, no a escondidas",
     principle1Body:
       "Cada pantalla está aprobada y es específica para tu rol — nunca un catálogo abierto que tengas que adivinar.",
@@ -277,6 +281,8 @@ export const fr: Dictionary = {
       "Le vrai Prompt Coach et l'Évaluation de Compétence, présentés exactement comme ils fonctionnent une fois connecté.",
     promptCoachTitle: "Prompt Coach",
     competenceAssessmentTitle: "Évaluation de Compétence",
+    communityTitle: "Communauté",
+    leaderboardTitle: "Classement",
     principle1Title: "Autorisé, pas en cachette",
     principle1Body:
       "Chaque écran est approuvé et spécifique à votre rôle — jamais un catalogue ouvert où deviner par vous-même.",
