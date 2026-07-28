@@ -1,15 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  /* Palette reset (2026-07-28, later same day, founder-directed): moved
-     from the earlier "warm neutrals, deliberately not cold blue" system to
-     a navy/blue + green enterprise-tech palette inspired directly by the
-     AWS Training & Certification page (dark navy header, light sky-blue
-     hero wash, white cards, pill buttons). This is a color/interaction
-     pass only — typography, layout, and copy are untouched. The tradeoff
-     this accepts (moving toward the visual language Denise associates
-     with "the tech team's thing") was flagged and confirmed before
-     implementing — see `web/CLAUDE.md` §7 history for the full note.
+  /* Palette (2026-07-28, founder-directed, two revisions same day):
+     (1) moved from the earlier "warm neutrals" system to a navy + white
+     enterprise-tech base inspired by the AWS Training & Certification page
+     (dark navy header, white cards, pill buttons, hover-glow); then
+     (2) the primary --accent was switched from AWS-style blue to GREEN to
+     match the new OnRamp logo (navy icon square, green ramp-check, green
+     "Ramp" wordmark). Backgrounds stay cool white/navy; the lead action
+     color is now green. Note --accent (green) and --success (green) are
+     now the same family by design — the brand is green-forward; the gold
+     --review tone still gives a third distinct pill color.
      All pairings below are computed (not eyeballed) against the WCAG 2.1
      relative-luminance formula; see the ratio next to each pairing. AA
      requires 4.5:1 for normal text, 3:1 for large text/UI components. */
@@ -19,17 +20,17 @@
   --card-border: #cdd9e8;
   --muted: #e6edf6;
   --muted-foreground: #536278; /* 5.26:1 on --muted, 5.56:1 on --background */
-  /* Navy/blue, the new single primary accent (was terracotta). Chosen in
-     the same family as AWS Cloudscape's primary blue (#0972d3), nudged
-     slightly deeper for a more "confident enterprise navy" read per the
-     founder's brief rather than a literal copy. */
-  --accent: #0b5fae;
-  --accent-foreground: #ffffff; /* 6.44:1 on --accent (button fill) */
-  --accent-soft: #dce8f7; /* accent text on this: 5.19:1 */
+  /* Brand green, the single primary accent (2026-07-28, later same day:
+     switched from the AWS-inspired blue to green to match the new OnRamp
+     logo, whose "Ramp" wordmark + certification check are green). Deep
+     enough that white button text clears AA on it. */
+  --accent: #12833f; /* white text on this: 4.83:1 (button fill) */
+  --accent-foreground: #ffffff;
+  --accent-soft: #daf1e2; /* accent text on this: 4.5:1 */
   /* Glow color for hover-brightening (AWS-style "lights up" buttons, see
      ui.tsx PrimaryLink and every CTA below) — an alpha version of
      --accent used only in box-shadow, not as a flat fill/text color. */
-  --accent-glow: rgba(11, 95, 174, 0.5);
+  --accent-glow: rgba(18, 131, 63, 0.5);
   /* Green kept as the real secondary brand color (badges, success states,
      "Added" chips), shifted slightly cooler/deeper to sit next to the new
      blue instead of the previous grass-green. */
@@ -70,10 +71,10 @@
     --card-border: #2a3a4a;
     --muted: #1c2a37;
     --muted-foreground: #9db1c4; /* 6.63:1 on --muted, 8.18:1 on --background */
-    --accent: #4da8ff; /* brighter blue so it still reads as a link/accent on near-black */
-    --accent-foreground: #0b1620; /* dark text on light-blue fill: 7.27:1 */
-    --accent-soft: #16324a; /* accent text on this: 5.26:1 */
-    --accent-glow: rgba(77, 168, 255, 0.55);
+    --accent: #4fd08a; /* brighter green so it still reads as a link/accent on near-black */
+    --accent-foreground: #0b1620; /* dark text on light-green fill: 8.9:1 */
+    --accent-soft: #143528; /* accent text on this: 6.9:1 */
+    --accent-glow: rgba(79, 208, 138, 0.55);
     --success: #57cf8e;
     --success-foreground: #0b1620; /* 9.32:1 on --success */
     --success-soft: #163524; /* success text on this: 6.83:1 */

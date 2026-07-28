@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { useLocale } from "@/lib/i18n/locale-context";
 import { locales, localeLabels, type Locale } from "@/lib/i18n/dictionaries";
+import { BrandLogo } from "@/components/brand-logo";
 
 export function SiteHeader() {
   const router = useRouter();
@@ -48,8 +49,8 @@ export function SiteHeader() {
   return (
     <header className="border-b border-card-border bg-card/60">
       <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-4">
-        <Link href="/" className="flex items-baseline gap-2">
-          <span className="text-lg font-semibold tracking-tight">OnRamp</span>
+        <Link href="/" className="flex items-center gap-2">
+          <BrandLogo />
           <span className="hidden text-sm text-muted-foreground sm:inline">
             {t.nav.tag}
           </span>
