@@ -92,7 +92,7 @@ export function SiteHeader() {
             <div className="flex items-center gap-4">
               <Link
                 href="/app"
-                className="rounded-full bg-muted px-4 py-1.5 text-sm text-foreground transition hover:bg-accent-soft"
+                className="rounded-full bg-muted px-4 py-1.5 text-sm text-foreground transition-all duration-200 hover:bg-accent-soft hover:shadow-[0_0_14px_-4px_var(--accent-glow)]"
               >
                 {name}
               </Link>
@@ -106,7 +106,7 @@ export function SiteHeader() {
           ) : (
             <Link
               href="/login"
-              className="rounded-full bg-accent px-4 py-1.5 text-sm font-medium text-accent-foreground transition hover:opacity-90"
+              className="rounded-full bg-accent px-4 py-1.5 text-sm font-medium text-accent-foreground transition-all duration-200 hover:brightness-110 hover:shadow-[0_0_0_1px_var(--accent),0_0_18px_-2px_var(--accent-glow)] active:brightness-95"
             >
               {t.nav.login}
             </Link>

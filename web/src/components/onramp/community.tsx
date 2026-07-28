@@ -112,7 +112,7 @@ export function Community({
         <button
           type="button"
           onClick={() => setComposerOpen((v) => !v)}
-          className="shrink-0 rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-foreground transition hover:opacity-90"
+          className="shrink-0 rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-foreground transition-all duration-200 hover:brightness-110 hover:shadow-[0_0_0_1px_var(--accent),0_0_20px_-2px_var(--accent-glow)] active:brightness-95"
         >
           {composerOpen ? "Cancel" : "Share a prompt"}
         </button>
@@ -221,7 +221,7 @@ function PostDetail({
             onAnswer(draft.trim());
             setDraft("");
           }}
-          className="mt-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-foreground transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
+          className="mt-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-foreground transition-all duration-200 hover:brightness-110 hover:shadow-[0_0_0_1px_var(--accent),0_0_20px_-2px_var(--accent-glow)] active:brightness-95 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:brightness-100 disabled:hover:shadow-none"
         >
           Post answer
         </button>
@@ -319,7 +319,7 @@ function PostComposer({
           type="button"
           disabled={!title.trim() || !body.trim()}
           onClick={() => onSubmit(title.trim(), track, body.trim(), promptSnippet)}
-          className="rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-foreground transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
+          className="rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-foreground transition-all duration-200 hover:brightness-110 hover:shadow-[0_0_0_1px_var(--accent),0_0_20px_-2px_var(--accent-glow)] active:brightness-95 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:brightness-100 disabled:hover:shadow-none"
         >
           Post to community
         </button>

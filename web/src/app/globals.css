@@ -1,28 +1,46 @@
 @import "tailwindcss";
 
 :root {
-  --background: #faf7f2;
-  --foreground: #2b2420;
+  /* Palette reset (2026-07-28, later same day, founder-directed): moved
+     from the earlier "warm neutrals, deliberately not cold blue" system to
+     a navy/blue + green enterprise-tech palette inspired directly by the
+     AWS Training & Certification page (dark navy header, light sky-blue
+     hero wash, white cards, pill buttons). This is a color/interaction
+     pass only — typography, layout, and copy are untouched. The tradeoff
+     this accepts (moving toward the visual language Denise associates
+     with "the tech team's thing") was flagged and confirmed before
+     implementing — see `web/CLAUDE.md` §7 history for the full note.
+     All pairings below are computed (not eyeballed) against the WCAG 2.1
+     relative-luminance formula; see the ratio next to each pairing. AA
+     requires 4.5:1 for normal text, 3:1 for large text/UI components. */
+  --background: #ffffff; /* plain white per founder direction, not the blue-tinted wash */
+  --foreground: #172433; /* dark navy-charcoal, not warm brown — 14.65:1 on --background */
   --card: #ffffff;
-  --card-border: #e8dfd2;
-  --muted: #f3ede4;
-  --muted-foreground: #6b5f52;
-  /* Terracotta, warmed and deepened from a muted clay to a confident
-     rust-coral — still the single primary accent, just no longer
-     apologetic about it. */
-  --accent: #ab4521;
-  --accent-foreground: #ffffff;
-  --accent-soft: #f2dfd9;
-  /* Teal/green promoted from a "status color" into a real secondary
-     brand color (badges, icons, small accents) — same hue family as
-     before, pushed from a sage murmur to an actual grass green. */
-  --success: #1f7a3d;
-  --success-foreground: #ffffff;
-  --success-soft: #e2f3e8;
-  /* Amber/gold promoted into a real tertiary accent alongside the above
-     two — deepened from a dusty tan to a proper ochre/gold. */
+  --card-border: #cdd9e8;
+  --muted: #e6edf6;
+  --muted-foreground: #536278; /* 5.26:1 on --muted, 5.56:1 on --background */
+  /* Navy/blue, the new single primary accent (was terracotta). Chosen in
+     the same family as AWS Cloudscape's primary blue (#0972d3), nudged
+     slightly deeper for a more "confident enterprise navy" read per the
+     founder's brief rather than a literal copy. */
+  --accent: #0b5fae;
+  --accent-foreground: #ffffff; /* 6.44:1 on --accent (button fill) */
+  --accent-soft: #dce8f7; /* accent text on this: 5.19:1 */
+  /* Glow color for hover-brightening (AWS-style "lights up" buttons, see
+     ui.tsx PrimaryLink and every CTA below) — an alpha version of
+     --accent used only in box-shadow, not as a flat fill/text color. */
+  --accent-glow: rgba(11, 95, 174, 0.5);
+  /* Green kept as the real secondary brand color (badges, success states,
+     "Added" chips), shifted slightly cooler/deeper to sit next to the new
+     blue instead of the previous grass-green. */
+  --success: #147a45;
+  --success-foreground: #ffffff; /* 5.39:1 on --success */
+  --success-soft: #dcf0e3; /* success text on this: 4.52:1 */
+  /* Gold/ochre kept as a third accent for review/needs-review states —
+     it still earns its place as a distinct "pay attention, not alarm"
+     tone next to blue+green and was already contrast-verified. */
   --review: #8f5804;
-  --review-soft: #f2e8d9;
+  --review-soft: #f2e8d9; /* review text on this: 4.86:1 */
 }
 
 @theme inline {
@@ -46,20 +64,21 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #211c17;
-    --foreground: #f2ece3;
-    --card: #2a241e;
-    --card-border: #423a30;
-    --muted: #322b23;
-    --muted-foreground: #b7a996;
-    --accent: #e46d44;
-    --accent-foreground: #211c17;
-    --accent-soft: #35231d;
-    --success: #5ec982;
-    --success-foreground: #211c17;
-    --success-soft: #203c29;
-    --review: #d79b42;
-    --review-soft: #47371f;
+    --background: #0f1720; /* cool dark navy, not warm brown-black */
+    --foreground: #eaf1f8; /* 15.84:1 on --background */
+    --card: #16212c;
+    --card-border: #2a3a4a;
+    --muted: #1c2a37;
+    --muted-foreground: #9db1c4; /* 6.63:1 on --muted, 8.18:1 on --background */
+    --accent: #4da8ff; /* brighter blue so it still reads as a link/accent on near-black */
+    --accent-foreground: #0b1620; /* dark text on light-blue fill: 7.27:1 */
+    --accent-soft: #16324a; /* accent text on this: 5.26:1 */
+    --accent-glow: rgba(77, 168, 255, 0.55);
+    --success: #57cf8e;
+    --success-foreground: #0b1620; /* 9.32:1 on --success */
+    --success-soft: #163524; /* success text on this: 6.83:1 */
+    --review: #e0a83f;
+    --review-soft: #3a2e12; /* review text on this: 6.23:1 */
   }
 }
 

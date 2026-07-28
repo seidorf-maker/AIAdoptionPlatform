@@ -141,7 +141,7 @@ export default function PricingPage() {
             </div>
             <a
               href={CONTACT_HREF}
-              className="inline-flex items-center justify-center rounded-full border border-card-border bg-background px-4 py-2 text-sm font-medium transition hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-accent"
+              className="inline-flex items-center justify-center rounded-full border border-card-border bg-background px-4 py-2 text-sm font-medium transition-all duration-200 hover:border-accent hover:text-accent hover:shadow-[0_0_16px_-4px_var(--accent-glow)] focus-visible:outline-2 focus-visible:outline-accent"
             >
               {p.contactUs}
             </a>
@@ -197,7 +197,7 @@ function PricingTier({
       <div className="mt-5">
         <a
           href={contactHref}
-          className="inline-flex w-full items-center justify-center rounded-full border border-card-border bg-background px-4 py-2 text-sm font-medium transition hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-accent"
+          className="inline-flex w-full items-center justify-center rounded-full border border-card-border bg-background px-4 py-2 text-sm font-medium transition-all duration-200 hover:border-accent hover:text-accent hover:shadow-[0_0_16px_-4px_var(--accent-glow)] focus-visible:outline-2 focus-visible:outline-accent"
         >
           {contactLabel}
         </a>

@@ -71,10 +71,10 @@ export function LearningPaths() {
               <button
                 type="button"
                 onClick={() => toggle(i)}
-                className={`ml-auto rounded-md border px-2.5 py-1 text-xs ${
+                className={`ml-auto rounded-md border px-2.5 py-1 text-xs transition-all duration-200 ${
                   added.has(i)
                     ? "border-success bg-success text-success-foreground"
-                    : "border-card-border bg-background text-muted-foreground hover:border-accent hover:text-accent"
+                    : "border-card-border bg-background text-muted-foreground hover:border-accent hover:text-accent hover:shadow-[0_0_12px_-4px_var(--accent-glow)]"
                 }`}
               >
                 {added.has(i) ? "Added ✓" : "+ Add to path"}
