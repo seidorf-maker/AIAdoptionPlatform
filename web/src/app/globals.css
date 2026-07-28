@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  /* Palette (2026-07-28, founder-directed, two revisions same day):
-     (1) moved from the earlier "warm neutrals" system to a navy + white
-     enterprise-tech base inspired by the AWS Training & Certification page
-     (dark navy header, white cards, pill buttons, hover-glow); then
-     (2) the primary --accent was switched from AWS-style blue to GREEN to
-     match the new OnRamp logo (navy icon square, green ramp-check, green
-     "Ramp" wordmark). Backgrounds stay cool white/navy; the lead action
-     color is now green. Note --accent (green) and --success (green) are
-     now the same family by design — the brand is green-forward; the gold
-     --review tone still gives a third distinct pill color.
+  /* Palette (2026-07-28, founder-directed, several revisions same day):
+     (1) moved from "warm neutrals" to a navy + white enterprise-tech base
+     inspired by the AWS Training & Certification page (dark navy header,
+     white cards, pill buttons, hover-glow); (2) briefly made the primary
+     accent green to match the new OnRamp logo; (3) the founder found the
+     all-green look too monochrome and asked for BLUE + GREEN throughout —
+     so the primary --accent is blue again (buttons/links/eyebrows/active
+     tabs) while green stays for the logo, success states, and the very-top
+     header "Log in" button. Blue = primary action; green = brand + success;
+     gold --review = third pill tone. Backgrounds stay cool white/navy.
      All pairings below are computed (not eyeballed) against the WCAG 2.1
      relative-luminance formula; see the ratio next to each pairing. AA
      requires 4.5:1 for normal text, 3:1 for large text/UI components. */
@@ -20,23 +20,23 @@
   --card-border: #cdd9e8;
   --muted: #e6edf6;
   --muted-foreground: #536278; /* 5.26:1 on --muted, 5.56:1 on --background */
-  /* Brand green, the single primary accent (2026-07-28, later same day:
-     switched from the AWS-inspired blue to green to match the new OnRamp
-     logo, whose "Ramp" wordmark + certification check are green). Deep
-     enough that white button text clears AA on it. */
-  --accent: #12833f; /* white text on this: 4.83:1 (button fill) */
+  /* Blue, the primary action accent (buttons, links, eyebrows, active
+     tabs). Same family as AWS Cloudscape's primary blue (#0972d3), nudged
+     slightly deeper for a confident enterprise read. */
+  --accent: #0b5fae; /* white text on this: 6.44:1 (button fill) */
   --accent-foreground: #ffffff;
-  --accent-soft: #daf1e2; /* accent text on this: 4.5:1 */
+  --accent-soft: #dce8f7; /* accent text on this: 5.19:1 */
   /* Glow color for hover-brightening (AWS-style "lights up" buttons, see
      ui.tsx PrimaryLink and every CTA below) — an alpha version of
      --accent used only in box-shadow, not as a flat fill/text color. */
-  --accent-glow: rgba(18, 131, 63, 0.5);
-  /* Green kept as the real secondary brand color (badges, success states,
-     "Added" chips), shifted slightly cooler/deeper to sit next to the new
-     blue instead of the previous grass-green. */
+  --accent-glow: rgba(11, 95, 174, 0.5);
+  /* Green — the brand color (logo "Ramp" + certification check), success
+     states ("Added" chips, ROI pill), and the top-nav "Log in" button. A
+     real second color alongside the blue, not just a status tint. */
   --success: #147a45;
   --success-foreground: #ffffff; /* 5.39:1 on --success */
   --success-soft: #dcf0e3; /* success text on this: 4.52:1 */
+  --success-glow: rgba(20, 122, 69, 0.5); /* green hover-glow, mirrors --accent-glow */
   /* Gold/ochre kept as a third accent for review/needs-review states —
      it still earns its place as a distinct "pay attention, not alarm"
      tone next to blue+green and was already contrast-verified. */
@@ -71,13 +71,14 @@
     --card-border: #2a3a4a;
     --muted: #1c2a37;
     --muted-foreground: #9db1c4; /* 6.63:1 on --muted, 8.18:1 on --background */
-    --accent: #4fd08a; /* brighter green so it still reads as a link/accent on near-black */
-    --accent-foreground: #0b1620; /* dark text on light-green fill: 8.9:1 */
-    --accent-soft: #143528; /* accent text on this: 6.9:1 */
-    --accent-glow: rgba(79, 208, 138, 0.55);
+    --accent: #4da8ff; /* brighter blue so it still reads as a link/accent on near-black */
+    --accent-foreground: #0b1620; /* dark text on light-blue fill: 7.27:1 */
+    --accent-soft: #16324a; /* accent text on this: 5.26:1 */
+    --accent-glow: rgba(77, 168, 255, 0.55);
     --success: #57cf8e;
     --success-foreground: #0b1620; /* 9.32:1 on --success */
     --success-soft: #163524; /* success text on this: 6.83:1 */
+    --success-glow: rgba(87, 207, 142, 0.55);
     --review: #e0a83f;
     --review-soft: #3a2e12; /* review text on this: 6.23:1 */
   }

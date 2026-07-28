@@ -2,7 +2,8 @@
 // "OnRamp" wordmark. The icon is self-contained on its dark square so it
 // works on any background; the wordmark splits "On" (theme foreground, so
 // it reads in both light and dark mode) from "Ramp" (the brand green via
-// the themed --accent token, contrast-safe in both modes).
+// the themed --success token — green is the brand color; the primary
+// --accent is blue, so the logo deliberately does NOT track it).
 
 export function OnRampIcon({ className = "" }: { className?: string }) {
   return (
@@ -41,7 +42,7 @@ export function BrandLogo({ className = "" }: { className?: string }) {
       <OnRampIcon className="h-7 w-7 shrink-0" />
       <span className="text-lg font-extrabold tracking-tight">
         <span className="text-foreground">On</span>
-        <span className="text-accent">Ramp</span>
+        <span className="text-success">Ramp</span>
       </span>
     </span>
   );
