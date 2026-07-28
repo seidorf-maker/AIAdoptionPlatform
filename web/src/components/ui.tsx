@@ -41,6 +41,26 @@ export function Pill({
   );
 }
 
+// Splits a translated template string on a literal "{{accent}}" marker and
+// renders the replacement in the accent color — keeps the styled fragment
+// out of the translation dictionaries so translators only ever touch prose.
+export function AccentText({
+  template,
+  accent,
+}: {
+  template: string;
+  accent: string;
+}) {
+  const [before, after] = template.split("{{accent}}");
+  return (
+    <>
+      {before}
+      <span className="text-accent">{accent}</span>
+      {after}
+    </>
+  );
+}
+
 export function PrimaryLink({
   href,
   children,

@@ -4,11 +4,14 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import { useLocale } from "@/lib/i18n/locale-context";
+import { locales, localeLabels, type Locale } from "@/lib/i18n/dictionaries";
 
 export function SiteHeader() {
   const router = useRouter();
   const pathname = usePathname();
   const [name, setName] = useState<string | null | undefined>(undefined);
+  const { locale, setLocale, t } = useLocale();
 
   useEffect(() => {
     const supabase = createClient();
@@ -48,7 +51,7 @@ export function SiteHeader() {
         <Link href="/" className="flex items-baseline gap-2">
           <span className="text-lg font-semibold tracking-tight">OnRamp</span>
           <span className="hidden text-sm text-muted-foreground sm:inline">
-            AI, for the rest of us
+            {t.nav.tag}
           </span>
         </Link>
 
@@ -59,14 +62,30 @@ export function SiteHeader() {
             href="/about"
             className="text-sm text-muted-foreground transition hover:text-accent"
           >
-            Our Mission
+            {t.nav.ourMission}
           </Link>
           <Link
             href="/pricing"
             className="text-sm text-muted-foreground transition hover:text-accent"
           >
-            Pricing
+            {t.nav.pricing}
           </Link>
+
+          <label className="sr-only" htmlFor="locale-switcher">
+            Language
+          </label>
+          <select
+            id="locale-switcher"
+            value={locale}
+            onChange={(e) => setLocale(e.target.value as Locale)}
+            className="rounded-full border border-card-border bg-background px-3 py-1.5 text-sm text-muted-foreground outline-none transition hover:border-accent focus-visible:border-accent"
+          >
+            {locales.map((l) => (
+              <option key={l} value={l}>
+                {localeLabels[l]}
+              </option>
+            ))}
+          </select>
 
           {/* /app has its own greeting + Sign Out in AppShell — avoid duplicating it here. */}
           {pathname?.startsWith("/app") ? null : name === undefined ? null : name ? (
@@ -81,7 +100,7 @@ export function SiteHeader() {
                 onClick={signOut}
                 className="text-sm text-muted-foreground underline decoration-dotted"
               >
-                Log out
+                {t.nav.logout}
               </button>
             </div>
           ) : (
@@ -89,7 +108,7 @@ export function SiteHeader() {
               href="/login"
               className="rounded-full bg-accent px-4 py-1.5 text-sm font-medium text-accent-foreground transition hover:opacity-90"
             >
-              Log in
+              {t.nav.login}
             </Link>
           )}
         </div>

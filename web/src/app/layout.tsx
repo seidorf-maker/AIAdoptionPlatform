@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { cookies } from "next/headers";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
+import { LocaleProvider } from "@/lib/i18n/locale-context";
+import { locales, type Locale } from "@/lib/i18n/dictionaries";
+import { SiteFooter } from "@/components/site-footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,26 +36,30 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const cookieLocale = cookieStore.get("onramp_locale")?.value;
+  const initialLocale: Locale = (locales as readonly string[]).includes(
+    cookieLocale ?? ""
+  )
+    ? (cookieLocale as Locale)
+    : "en";
+
   return (
     <html
-      lang="en"
+      lang={initialLocale}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        <SiteHeader />
-        <main className="flex-1">{children}</main>
-        <footer className="border-t border-card-border px-6 py-6 text-sm text-muted-foreground">
-          <div className="mx-auto max-w-3xl">
-            This is a demo environment — screens are seeded with sample data
-            so you can explore the full product experience. No real accounts
-            or company data are used here.
-          </div>
-        </footer>
+        <LocaleProvider initialLocale={initialLocale}>
+          <SiteHeader />
+          <main className="flex-1">{children}</main>
+          <SiteFooter />
+        </LocaleProvider>
       </body>
     </html>
   );

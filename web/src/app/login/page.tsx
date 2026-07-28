@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import { useLocale } from "@/lib/i18n/locale-context";
 
 // Demo-mode login: this is presented live, so there is no real email
 // round-trip / OTP / magic link. Any typed email creates a REAL Supabase
@@ -12,6 +13,8 @@ import { createClient } from "@/lib/supabase/client";
 // intentional in demo mode, not a shortcut that snuck in.
 export default function LoginPage() {
   const router = useRouter();
+  const { t } = useLocale();
+  const l = t.login;
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -45,26 +48,23 @@ export default function LoginPage() {
 
   return (
     <div className="mx-auto max-w-sm px-6 py-16">
-      <p className="text-sm font-medium text-accent">
-        AI, for the rest of us.
-      </p>
+      <p className="text-sm font-medium text-accent">{l.tag}</p>
       <h1 className="mt-2 text-2xl font-semibold tracking-tight">
-        OnRamp certifies that non-technical employees can actually do their
-        job with AI — not just that they watched a course.
+        {l.oneLiner}
       </h1>
 
       <div className="mt-6 rounded-2xl border border-card-border bg-card p-6 shadow-sm">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="email" className="text-sm font-medium">
-              Work email
+              {l.emailLabel}
             </label>
             <input
               id="email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@company.com"
+              placeholder={l.emailPlaceholder}
               autoFocus
               className="mt-1.5 w-full rounded-lg border border-card-border bg-background px-3 py-2 text-sm outline-none focus-visible:border-accent"
             />
@@ -74,14 +74,14 @@ export default function LoginPage() {
             disabled={!email.trim() || submitting}
             className="w-full rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
           >
-            {submitting ? "Signing in…" : "Sign In"}
+            {submitting ? l.signingIn : l.signIn}
           </button>
         </form>
         {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
       </div>
 
       <p className="mt-4 text-center text-xs text-muted-foreground">
-        Demo mode — any email signs you in as Denise Carter.
+        {l.demoNote}
       </p>
     </div>
   );
