@@ -17,7 +17,16 @@ export default function Home() {
         that you watched a video.
       </p>
 
-      <div className="mt-8">
+      <div className="mt-6 flex items-center gap-3 rounded-xl border border-card-border bg-muted/60 px-4 py-3 text-sm text-muted-foreground">
+        <span>
+          <span className="font-semibold text-foreground">67%</span> of
+          employees already use AI at work, but only{" "}
+          <span className="font-semibold text-foreground">33%</span> of
+          companies train them on it — that gap is what OnRamp closes.
+        </span>
+      </div>
+
+      <div className="mt-6">
         <PrimaryLink href="/login">Log in</PrimaryLink>
       </div>
 

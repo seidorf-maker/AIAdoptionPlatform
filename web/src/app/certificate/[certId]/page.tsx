@@ -55,8 +55,9 @@ export default async function CertificatePage({
 
       <p className="mt-4 text-center text-xs text-muted-foreground">
         This certificate is self-issued by OnRamp and independently
-        verifiable, no login required — see research/certification-strategy.md
-        for why that matters more than the certificate&apos;s format.
+        verifiable — anyone can confirm it&apos;s real with no login
+        required. What it represents matters more than its format: a
+        demonstrated skill, not a completion badge.
       </p>
     </div>
     </AuthGuard>

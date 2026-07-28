@@ -71,9 +71,8 @@ export default function LoginPage() {
       </Card>
 
       <p className="mt-4 text-center text-xs text-muted-foreground">
-        Prototype demo — any email and password will work. No real accounts
-        or credentials are checked; this signs you in as the demo persona,
-        Denise Carter.
+        Demo environment — sign in with any work email to preview OnRamp as
+        our example user, Denise Carter.
       </p>
     </div>
   );

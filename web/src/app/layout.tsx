@@ -13,10 +13,23 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const title = "OnRamp — AI adoption for the rest of us";
+const description =
+  "A role-based AI adoption platform: sanctioned, job-specific AI training with real, competence-based certification — not another completion badge.";
+
 export const metadata: Metadata = {
-  title: "OnRamp — AI adoption for the rest of us",
-  description:
-    "A role-based AI adoption prototype: sanctioned, job-specific AI training with real, competence-based certification.",
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title,
+    description,
+  },
 };
 
 export default function RootLayout({
@@ -34,8 +47,9 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <footer className="border-t border-card-border px-6 py-6 text-sm text-muted-foreground">
           <div className="mx-auto max-w-3xl">
-            OnRamp is a prototype built for a course project — this demo uses
-            local sample data only, no accounts or real data are stored.
+            This is a demo environment — screens are seeded with sample data
+            so you can explore the full product experience. No real accounts
+            or company data are used here.
           </div>
         </footer>
       </body>

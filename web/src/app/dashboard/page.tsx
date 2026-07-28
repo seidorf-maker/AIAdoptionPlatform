@@ -50,8 +50,8 @@ export default function DashboardPage() {
           <Pill tone="neutral">Demo data</Pill>
         </div>
         <p className="mt-1 text-sm text-muted-foreground">
-          In production this reflects your company&apos;s real LinkedIn
-          Learning connection. This prototype shows sample data only.
+          In a live deployment this reflects your company&apos;s real
+          LinkedIn Learning connection. This demo shows sample data.
         </p>
         <ul className="mt-4 space-y-2">
           {integrationConnections.map((c) => (
