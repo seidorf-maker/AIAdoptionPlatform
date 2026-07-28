@@ -1,5 +1,13 @@
-import type { ReactNode } from "react";
+"use client";
 
+import { type ReactNode, useEffect, useRef } from "react";
+
+// Cursor-tracking border glow (à la reactbits.dev/components/border-glow):
+// a soft radial gradient follows the pointer around the card's border ring
+// and fades out on mouse-leave. Uses a mask-composite "exclude" trick so
+// only a thin ring around the edge lights up, not the whole card face.
+// Position is pushed via a plain DOM style property (not React state) so
+// mousemove doesn't trigger a re-render per pixel.
 export function Card({
   children,
   className = "",
@@ -7,10 +15,51 @@ export function Card({
   children: ReactNode;
   className?: string;
 }) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    function handleMove(e: MouseEvent) {
+      const rect = el!.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      el!.style.setProperty("--glow-x", `${x}%`);
+      el!.style.setProperty("--glow-y", `${y}%`);
+      el!.style.setProperty("--glow-opacity", "1");
+    }
+    function handleLeave() {
+      el!.style.setProperty("--glow-opacity", "0");
+    }
+
+    el.addEventListener("mousemove", handleMove);
+    el.addEventListener("mouseleave", handleLeave);
+    return () => {
+      el.removeEventListener("mousemove", handleMove);
+      el.removeEventListener("mouseleave", handleLeave);
+    };
+  }, []);
+
   return (
     <div
-      className={`rounded-2xl border border-card-border bg-card p-6 shadow-sm ${className}`}
+      ref={ref}
+      className={`relative rounded-2xl border border-card-border bg-card p-6 shadow-sm ${className}`}
     >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 rounded-[inherit] transition-opacity duration-300"
+        style={{
+          padding: 1,
+          opacity: "var(--glow-opacity, 0)",
+          background:
+            "radial-gradient(220px circle at var(--glow-x, 50%) var(--glow-y, 50%), var(--accent-glow), transparent 70%)",
+          WebkitMask:
+            "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
+          WebkitMaskComposite: "xor",
+          maskComposite: "exclude",
+        }}
+      />
       {children}
     </div>
   );
