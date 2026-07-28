@@ -32,23 +32,66 @@ export default function PricingPage() {
       <Card className="mt-14">
         <Pill tone="success">Why this saves money</Pill>
         <p className="mt-3 text-lg font-medium text-balance">
-          A single ~4,200-employee company can spend roughly{" "}
-          <span className="text-accent">$960K a year</span> on AI/L&D
-          training seats that never convert into applied skill.
+          Even in 2026, fewer than 1 in 5 companies actually use AI in
+          daily operations.
         </p>
         <p className="mt-2 text-sm text-muted-foreground text-pretty">
-          67% of employees already use AI at work, but only a third of
-          organizations formally train them on it — the rest is shadow
-          usage nobody can vouch for. At typical enterprise L&D seat
-          pricing, that gap costs a mid-size company like this roughly
-          $960K a year in training spend that never turns into
-          demonstrated, real-world skill. OnRamp doesn&apos;t ask you to
-          spend more on top of that — it makes the spend you&apos;ve
-          already made actually work.{" "}
-          <span className="text-muted-foreground">
-            (Illustrative modeling based on our own market research, not an
-            audited figure for any specific company.)
-          </span>
+          The Census Bureau&apos;s own May 2026 survey found only 19.8% of
+          U.S. businesses report using AI in operations — 37% among large
+          employers, still well under half. Gallup&apos;s Q2 2026
+          workforce survey found a similar shape at the employee level:
+          47% of employees say their company has rolled out AI, but a
+          2025 global study found only 42% actually use the tools their
+          employer provides — most reach for free, unsanctioned tools
+          instead. At typical enterprise L&D seat pricing (~$380/user/year
+          for LinkedIn Learning Teams), a 4,200-employee company spends
+          roughly $1.6M/year on training seats — even a conservative
+          estimate that half of that isn&apos;t reaching employees in a
+          governed, sanctioned way points to{" "}
+          <span className="text-accent">~$800K a year</span>{" "}
+          in spend that isn&apos;t converting into demonstrated, real-world skill.
+          OnRamp doesn&apos;t ask you to spend more on top of that — it
+          makes the spend you&apos;ve already made actually work.
+        </p>
+        <p className="mt-3 text-xs text-muted-foreground text-pretty">
+          Sources:{" "}
+          <a
+            href="https://www.census.gov/library/stories/2026/05/ai-use-businesses.html"
+            target="_blank"
+            rel="noopener"
+            className="underline decoration-dotted hover:text-accent"
+          >
+            U.S. Census Bureau, May 2026
+          </a>
+          ,{" "}
+          <a
+            href="https://www.gallup.com/workplace/712736/organizational-adoption-jumps-six-points.aspx"
+            target="_blank"
+            rel="noopener"
+            className="underline decoration-dotted hover:text-accent"
+          >
+            Gallup, Q2 2026
+          </a>
+          ,{" "}
+          <a
+            href="https://mbs.edu/faculty-and-research/trust-and-ai/key-findings-on-ai-at-work-and-in-education"
+            target="_blank"
+            rel="noopener"
+            className="underline decoration-dotted hover:text-accent"
+          >
+            Melbourne Business School, 2025
+          </a>
+          ,{" "}
+          <a
+            href="https://business.linkedin.com/learn/compare-plans"
+            target="_blank"
+            rel="noopener"
+            className="underline decoration-dotted hover:text-accent"
+          >
+            LinkedIn Learning pricing
+          </a>
+          . The $800K figure is an illustrative estimate built on these
+          sources, not an audited number for any specific company.
         </p>
       </Card>
 

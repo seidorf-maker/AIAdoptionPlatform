@@ -44,21 +44,34 @@ export default function AboutPage() {
         </p>
       </div>
 
-      {/* Market pattern callout, reusing existing stats */}
+      {/* Market pattern callout, reusing verified stats from /pricing */}
       <Card className="mt-10">
         <Pill tone="review">This isn&apos;t an isolated story</Pill>
         <p className="mt-3 text-lg font-medium text-balance">
-          67% of employees already use AI at work. Only a third of
-          organizations formally train them on it.
+          Even in 2026, fewer than 1 in 5 U.S. businesses report actually
+          using AI in daily operations.
         </p>
         <p className="mt-2 text-sm text-muted-foreground text-pretty">
-          That gap between quiet, ungoverned use and real, sanctioned skill
-          is common enough that a single mid-size company can lose roughly{" "}
-          <span className="text-accent">$960K a year</span>{" "}
+          Among employees whose companies have rolled AI out, most still
+          reach for free, unsanctioned tools instead of whatever their
+          employer provides. That gap between quiet, ungoverned use and
+          real, sanctioned skill is common enough that a single mid-size
+          company can have roughly{" "}
+          <span className="text-accent">$800K a year</span>{" "}
           in training spend that never converts into demonstrated ability. We built
           OnRamp to close that gap — not by asking companies to spend more,
           but by making the investment they&apos;ve already made actually
           work.
+        </p>
+        <p className="mt-3 text-xs text-muted-foreground">
+          See the full sourcing on{" "}
+          <a
+            href="/pricing"
+            className="underline decoration-dotted hover:text-accent"
+          >
+            our pricing page
+          </a>
+          .
         </p>
       </Card>
 
