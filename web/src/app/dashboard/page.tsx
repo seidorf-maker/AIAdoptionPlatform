@@ -1,4 +1,5 @@
 import { Card, Pill, PrimaryLink } from "@/components/ui";
+import { AuthGuard } from "@/components/auth-guard";
 import {
   courses,
   integrationConnections,
@@ -10,6 +11,7 @@ export default function DashboardPage() {
   const completedCount = courses.filter((c) => c.completed).length;
 
   return (
+    <AuthGuard>
     <div className="mx-auto max-w-3xl px-6 py-12">
       <p className="text-sm text-muted-foreground">
         {persona.jobTitle} · {persona.department} · {persona.orgName}
@@ -66,5 +68,6 @@ export default function DashboardPage() {
         </ul>
       </Card>
     </div>
+    </AuthGuard>
   );
 }
