@@ -7,13 +7,22 @@
   --card-border: #e8dfd2;
   --muted: #f3ede4;
   --muted-foreground: #6b5f52;
-  --accent: #c1603e;
+  /* Terracotta, warmed and deepened from a muted clay to a confident
+     rust-coral — still the single primary accent, just no longer
+     apologetic about it. */
+  --accent: #ab4521;
   --accent-foreground: #ffffff;
-  --accent-soft: #f3e2d8;
-  --success: #4c7a5e;
-  --success-soft: #e3ede6;
-  --review: #a8762f;
-  --review-soft: #f3e9d6;
+  --accent-soft: #f2dfd9;
+  /* Teal/green promoted from a "status color" into a real secondary
+     brand color (badges, icons, small accents) — same hue family as
+     before, pushed from a sage murmur to an actual grass green. */
+  --success: #1f7a3d;
+  --success-foreground: #ffffff;
+  --success-soft: #e2f3e8;
+  /* Amber/gold promoted into a real tertiary accent alongside the above
+     two — deepened from a dusty tan to a proper ochre/gold. */
+  --review: #8f5804;
+  --review-soft: #f2e8d9;
 }
 
 @theme inline {
@@ -27,6 +36,7 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-accent-soft: var(--accent-soft);
   --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
   --color-success-soft: var(--success-soft);
   --color-review: var(--review);
   --color-review-soft: var(--review-soft);
@@ -42,13 +52,14 @@
     --card-border: #423a30;
     --muted: #322b23;
     --muted-foreground: #b7a996;
-    --accent: #e08a63;
+    --accent: #e46d44;
     --accent-foreground: #211c17;
-    --accent-soft: #3d2c22;
-    --success: #7fb096;
-    --success-soft: #253128;
-    --review: #d8ab5f;
-    --review-soft: #392f1d;
+    --accent-soft: #35231d;
+    --success: #5ec982;
+    --success-foreground: #211c17;
+    --success-soft: #203c29;
+    --review: #d79b42;
+    --review-soft: #47371f;
   }
 }
 

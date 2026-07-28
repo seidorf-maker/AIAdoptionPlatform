@@ -73,7 +73,7 @@ export function LearningPaths() {
                 onClick={() => toggle(i)}
                 className={`ml-auto rounded-md border px-2.5 py-1 text-xs ${
                   added.has(i)
-                    ? "border-success bg-success text-white"
+                    ? "border-success bg-success text-success-foreground"
                     : "border-card-border bg-background text-muted-foreground hover:border-accent hover:text-accent"
                 }`}
               >

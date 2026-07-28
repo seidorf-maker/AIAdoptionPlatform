@@ -52,30 +52,41 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        {/* /app has its own greeting + Sign Out in AppShell — avoid duplicating it here. */}
-        {pathname?.startsWith("/app") ? null : name === undefined ? null : name ? (
-          <div className="flex items-center gap-4">
-            <Link
-              href="/app"
-              className="rounded-full bg-muted px-4 py-1.5 text-sm text-foreground transition hover:bg-accent-soft"
-            >
-              {name}
-            </Link>
-            <button
-              onClick={signOut}
-              className="text-sm text-muted-foreground underline decoration-dotted"
-            >
-              Log out
-            </button>
-          </div>
-        ) : (
+        <div className="flex items-center gap-4">
+          {/* Public marketing page — visible regardless of auth state, and
+              not gated by proxy.ts (which only touches "/", "/login", "/app"). */}
           <Link
-            href="/login"
-            className="rounded-full bg-accent px-4 py-1.5 text-sm font-medium text-accent-foreground transition hover:opacity-90"
+            href="/pricing"
+            className="text-sm text-muted-foreground transition hover:text-accent"
           >
-            Log in
+            Pricing
           </Link>
-        )}
+
+          {/* /app has its own greeting + Sign Out in AppShell — avoid duplicating it here. */}
+          {pathname?.startsWith("/app") ? null : name === undefined ? null : name ? (
+            <div className="flex items-center gap-4">
+              <Link
+                href="/app"
+                className="rounded-full bg-muted px-4 py-1.5 text-sm text-foreground transition hover:bg-accent-soft"
+              >
+                {name}
+              </Link>
+              <button
+                onClick={signOut}
+                className="text-sm text-muted-foreground underline decoration-dotted"
+              >
+                Log out
+              </button>
+            </div>
+          ) : (
+            <Link
+              href="/login"
+              className="rounded-full bg-accent px-4 py-1.5 text-sm font-medium text-accent-foreground transition hover:opacity-90"
+            >
+              Log in
+            </Link>
+          )}
+        </div>
       </div>
     </header>
   );
