@@ -4,6 +4,7 @@ import { use, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Card, Pill, PrimaryLink } from "@/components/ui";
+import { AuthGuard } from "@/components/auth-guard";
 import { assessment, simulateGrading } from "@/lib/mock-data";
 import type { GradingResult } from "@/lib/types";
 
@@ -40,6 +41,7 @@ export default function AssessmentPage({
   }
 
   return (
+    <AuthGuard>
     <div className="mx-auto max-w-3xl px-6 py-12">
       <Link
         href={`/track/${assessment.trackId}`}
@@ -94,6 +96,7 @@ export default function AssessmentPage({
         <ResultCard result={result} onRetry={() => setStage("writing")} onRouter={router} />
       )}
     </div>
+    </AuthGuard>
   );
 }
 

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Card, Pill } from "@/components/ui";
+import { AuthGuard } from "@/components/auth-guard";
 import { buildCertification } from "@/lib/mock-data";
 
 export default async function CertificatePage({
@@ -15,6 +16,7 @@ export default async function CertificatePage({
   const issued = new Date(certification.issuedAt);
 
   return (
+    <AuthGuard>
     <div className="mx-auto max-w-3xl px-6 py-12">
       <Link
         href="/dashboard"
@@ -57,5 +59,6 @@ export default async function CertificatePage({
         for why that matters more than the certificate&apos;s format.
       </p>
     </div>
+    </AuthGuard>
   );
 }

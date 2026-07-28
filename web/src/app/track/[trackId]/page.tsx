@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Card, Pill, PrimaryLink } from "@/components/ui";
+import { AuthGuard } from "@/components/auth-guard";
 import { assessment, courses, track } from "@/lib/mock-data";
 
 const sourceLabel: Record<string, string> = {
@@ -20,6 +21,7 @@ export default async function TrackPage({
   const allComplete = courses.every((c) => c.completed);
 
   return (
+    <AuthGuard>
     <div className="mx-auto max-w-3xl px-6 py-12">
       <Link
         href="/dashboard"
@@ -66,5 +68,6 @@ export default async function TrackPage({
         </div>
       </Card>
     </div>
+    </AuthGuard>
   );
 }

@@ -1,4 +1,5 @@
 import { Card, PrimaryLink } from "@/components/ui";
+import { persona } from "@/lib/mock-data";
 
 export default function Home() {
   return (
@@ -16,20 +17,23 @@ export default function Home() {
         that you watched a video.
       </p>
 
+      <div className="mt-8">
+        <PrimaryLink href="/login">Log in</PrimaryLink>
+      </div>
+
       <Card className="mt-10">
         <p className="text-sm font-medium text-muted-foreground">
-          Prototype demo
+          Who this is built for
         </p>
         <p className="mt-1 text-lg font-medium">
-          See it from Denise&apos;s side
+          {persona.fullName}, {persona.jobTitle}
         </p>
         <p className="mt-2 text-sm text-muted-foreground">
-          Senior Financial Analyst, Corporate Accounting — the persona this
-          product was built around.
+          {persona.department} at {persona.orgName} — one example of the
+          person OnRamp is designed around: capable, anxious about AI, and
+          never shown a sanctioned place to start. Log in above to see her
+          recommended track.
         </p>
-        <div className="mt-5">
-          <PrimaryLink href="/dashboard">Continue as Denise Carter</PrimaryLink>
-        </div>
       </Card>
 
       <div className="mt-10 grid gap-4 sm:grid-cols-3">
