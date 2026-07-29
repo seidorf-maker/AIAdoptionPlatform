@@ -16,6 +16,9 @@ export const en = {
     tag: "AI, for the rest of us",
     community: "Community",
     ourMission: "Our Mission",
+    howItWorks: "How It Works",
+    services: "Services",
+    results: "Results",
     pricing: "Pricing",
     login: "Log in",
     logout: "Log out",
@@ -130,6 +133,78 @@ export const en = {
     tryDemo: "Try the demo",
     seePricing: "See pricing",
   },
+  howItWorks: {
+    tag: "How it works",
+    heading:
+      "From “I don’t know where to start” to a credential you can point to.",
+    subhead:
+      "Five steps, each one small enough to fit into a lunch break — no rabbit holes, no jargon, nothing to figure out alone.",
+    step1Title: "Pick your role",
+    step1Body:
+      "Choose your function — Finance, Sales Operations, Customer Success, Operations, and more. Everything after this step is built around your actual job, not a generic AI 101.",
+    step2Title: "See your gap, not a catalog",
+    step2Body:
+      "OnRamp checks what you’ve already completed in LinkedIn Learning or your company LMS against what your role actually needs, and shows you exactly which one or two courses close the gap — not forty you have to guess through.",
+    step3Title: "Practice with Prompt Coach",
+    step3Body:
+      "A patient, judgment-free guide helps you write your first real prompt for your actual work, and shows you a usable draft in minutes — no one watching, no wrong way to ask.",
+    step4Title: "Prove it, don’t just watch it",
+    step4Body:
+      "The Competence Assessment hands you a real, messy scenario from your role. You use AI to work through it, then show what you’d check before trusting it — that’s the part a completion badge never asks for.",
+    step5Title: "Get certified — and get noticed",
+    step5Body:
+      "Earn a real, shareable credential the moment you demonstrate the skill, plus visibility your manager can see without you having to announce it yourself.",
+    tryDemo: "Try the demo",
+    seeServices: "See what's included",
+  },
+  services: {
+    tag: "What's included",
+    heading:
+      "Everything you need to go from uncertain to certified — nothing you have to build yourself.",
+    subhead:
+      "OnRamp isn’t a course library. It’s the layer that makes the training and tools your company already owns actually usable, role by role.",
+    svc1Title: "Role-based learning tracks",
+    svc1Body:
+      "Curated, job-specific AI use cases — pulled from your existing LinkedIn Learning or LMS catalog — mapped to your function, not a generic library you have to search through yourself.",
+    svc2Title: "Prompt Coach",
+    svc2Body:
+      "A guided first-use flow that turns ‘I don’t know how to ask’ into a usable draft in minutes, with plain-language reasoning so you build the skill, not just get an answer.",
+    svc3Title: "Competence Assessment & certification",
+    svc3Body:
+      "A real scenario, evaluated against a rubric — proof you can do the job with AI, not a record that you watched a video. Certifications are shareable, LinkedIn-ready credentials.",
+    svc4Title: "Gap-mapping across what you already own",
+    svc4Body:
+      "Connects to LinkedIn Learning or your company LMS, shows what’s already covered, and tells you exactly what’s missing — so nothing is duplicated and nothing is guessed at.",
+    svc5Title: "Manager & L&D dashboard",
+    svc5Body:
+      "One rollup view of enrollment, completion, and certification across every connected training source — instead of a separate report for every tool.",
+    svc6Title: "Community",
+    svc6Body:
+      "A judgment-free space to see how people in similar roles are actually using AI day to day — real prompts, real use cases, no leaderboard pressure unless you opt in.",
+    tryDemo: "Try the demo",
+    seePricing: "See pricing",
+  },
+  results: {
+    tag: "What progress looks like",
+    heading:
+      "You don’t have to overhaul how you work overnight. Here’s the real pace.",
+    subhead:
+      "Every track follows the same arc — small, sanctioned steps that compound, not a leap you’re expected to make alone.",
+    phase1Range: "1–3 months",
+    phase1Title: "Daily, confident AI use in your actual job",
+    phase1Body:
+      "Prompt Coach and your role-based track become part of the normal workday — drafting variance narratives, summarizing, reconciling, checking your own work faster, without wondering if you’re allowed to.",
+    phase2Range: "3–6 months",
+    phase2Title: "Building your first agent",
+    phase2Body:
+      "Once daily use feels routine, you move from asking AI for one-off help to setting up a small, repeatable agent that handles a specific piece of your workflow on its own — the point where ‘I use AI’ becomes ‘I built something.’",
+    phase3Range: "6–12 months",
+    phase3Title: "Agents with sub-agents — real automation",
+    phase3Body:
+      "Your agent starts delegating pieces of the work to specialized sub-agents of its own — a full, orchestrated workflow running with light supervision instead of you doing every step by hand. This is the ‘reference a way I used AI to solve a real problem’ moment the whole track is built toward.",
+    tryDemo: "Try the demo",
+    seePricing: "See pricing",
+  },
 };
 
 export type Dictionary = typeof en;
@@ -143,6 +218,9 @@ export const es: Dictionary = {
     tag: "IA, para el resto de nosotros",
     community: "Comunidad",
     ourMission: "Nuestra misión",
+    howItWorks: "Cómo funciona",
+    services: "Servicios",
+    results: "Resultados",
     pricing: "Precios",
     login: "Iniciar sesión",
     logout: "Cerrar sesión",
@@ -257,6 +335,78 @@ export const es: Dictionary = {
     tryDemo: "Prueba la demo",
     seePricing: "Ver precios",
   },
+  howItWorks: {
+    tag: "Cómo funciona",
+    heading:
+      "De “no sé por dónde empezar” a una credencial que puedes mostrar.",
+    subhead:
+      "Cinco pasos, cada uno lo bastante breve para caber en la hora del almuerzo — sin rodeos, sin jerga, sin tener que resolverlo sola.",
+    step1Title: "Elige tu rol",
+    step1Body:
+      "Elige tu función — Finanzas, Operaciones de Ventas, Éxito del Cliente, Operaciones y más. Todo lo que sigue está construido alrededor de tu trabajo real, no de un “AI 101” genérico.",
+    step2Title: "Ve tu brecha, no un catálogo",
+    step2Body:
+      "OnRamp compara lo que ya completaste en LinkedIn Learning o el LMS de tu empresa con lo que tu rol realmente necesita, y te muestra exactamente cuál o cuáles cursos cierran la brecha — no cuarenta entre los que tienes que adivinar.",
+    step3Title: "Practica con Prompt Coach",
+    step3Body:
+      "Un guía paciente y sin juicios te ayuda a escribir tu primer prompt real para tu trabajo, y te muestra un borrador utilizable en minutos — nadie observando, ninguna forma incorrecta de preguntar.",
+    step4Title: "Demuéstralo, no solo lo veas",
+    step4Body:
+      "La Evaluación de Competencia te presenta un escenario real y desordenado de tu rol. Usas IA para resolverlo y luego muestras qué verificarías antes de confiar en el resultado — eso es lo que una insignia de finalización nunca pide.",
+    step5Title: "Certifícate — y que lo noten",
+    step5Body:
+      "Obtén una credencial real y compartible en el momento en que demuestras la habilidad, además de visibilidad que tu jefe puede ver sin que tengas que anunciarlo tú misma.",
+    tryDemo: "Prueba la demo",
+    seeServices: "Ve qué incluye",
+  },
+  services: {
+    tag: "Qué incluye",
+    heading:
+      "Todo lo que necesitas para pasar de la incertidumbre a la certificación — nada que tengas que construir tú misma.",
+    subhead:
+      "OnRamp no es una biblioteca de cursos. Es la capa que hace que la formación y las herramientas que tu empresa ya tiene sean realmente utilizables, rol por rol.",
+    svc1Title: "Rutas de aprendizaje por rol",
+    svc1Body:
+      "Casos de uso de IA curados y específicos para tu puesto — extraídos de tu catálogo existente de LinkedIn Learning o LMS — mapeados a tu función, no una biblioteca genérica que tienes que buscar tú misma.",
+    svc2Title: "Prompt Coach",
+    svc2Body:
+      "Un flujo guiado de primer uso que convierte ‘no sé cómo preguntar’ en un borrador utilizable en minutos, con razonamiento en lenguaje claro para que construyas la habilidad, no solo obtengas una respuesta.",
+    svc3Title: "Evaluación de competencia y certificación",
+    svc3Body:
+      "Un escenario real, evaluado con una rúbrica — prueba de que puedes hacer el trabajo con IA, no un registro de que viste un video. Las certificaciones son credenciales compartibles, listas para LinkedIn.",
+    svc4Title: "Mapeo de brechas sobre lo que ya tienes",
+    svc4Body:
+      "Se conecta a LinkedIn Learning o al LMS de tu empresa, muestra lo que ya está cubierto y te dice exactamente qué falta — para que nada se duplique ni se adivine.",
+    svc5Title: "Panel para gerentes y L&D",
+    svc5Body:
+      "Una sola vista consolidada de inscripción, finalización y certificación en cada fuente de formación conectada — en lugar de un informe separado por cada herramienta.",
+    svc6Title: "Comunidad",
+    svc6Body:
+      "Un espacio sin juicios para ver cómo personas en roles similares realmente usan IA en su día a día — prompts reales, casos de uso reales, sin presión de tabla de clasificación a menos que tú lo elijas.",
+    tryDemo: "Prueba la demo",
+    seePricing: "Ver precios",
+  },
+  results: {
+    tag: "Cómo se ve el progreso",
+    heading:
+      "No tienes que cambiar cómo trabajas de la noche a la mañana. Este es el ritmo real.",
+    subhead:
+      "Cada ruta sigue el mismo arco — pasos pequeños y autorizados que se acumulan, no un salto que se espera que des sola.",
+    phase1Range: "1–3 meses",
+    phase1Title: "Uso diario y seguro de IA en tu trabajo real",
+    phase1Body:
+      "Prompt Coach y tu ruta por rol se vuelven parte del día a día — redactar explicaciones de variación, resumir, conciliar, revisar tu propio trabajo más rápido, sin preguntarte si está permitido.",
+    phase2Range: "3–6 meses",
+    phase2Title: "Construyendo tu primer agente",
+    phase2Body:
+      "Una vez que el uso diario se siente rutinario, pasas de pedirle ayuda puntual a la IA a configurar un agente pequeño y repetible que maneja por sí solo una parte específica de tu flujo de trabajo — el punto donde ‘uso IA’ se convierte en ‘construí algo’.",
+    phase3Range: "6–12 meses",
+    phase3Title: "Agentes con subagentes — automatización real",
+    phase3Body:
+      "Tu agente empieza a delegar partes del trabajo a subagentes especializados propios — un flujo de trabajo completo y orquestado que funciona con supervisión ligera en lugar de que hagas cada paso a mano. Este es el momento de ‘mencionar cómo usé IA para resolver un problema real’ hacia el que apunta toda la ruta.",
+    tryDemo: "Prueba la demo",
+    seePricing: "Ver precios",
+  },
 };
 
 export const fr: Dictionary = {
@@ -268,6 +418,9 @@ export const fr: Dictionary = {
     tag: "L'IA, pour nous tous",
     community: "Communauté",
     ourMission: "Notre mission",
+    howItWorks: "Comment ça marche",
+    services: "Services",
+    results: "Résultats",
     pricing: "Tarifs",
     login: "Se connecter",
     logout: "Se déconnecter",
@@ -379,6 +532,78 @@ export const fr: Dictionary = {
       "OnRamp certifie une compétence IA réelle et spécifique au poste par une évaluation basée sur des scénarios — la preuve que quelqu'un peut accomplir une vraie tâche avec l'IA, pas la preuve qu'il a suivi un cours. Cela s'appuie sur les outils et la formation qu'une entreprise possède déjà plutôt que de les remplacer, donc rien à retirer et rien de nouveau à acquérir pour commencer.",
     whatP2:
       "Si vous voulez le tableau complet du fonctionnement de l'évaluation, ou son coût pour votre équipe, c'est couvert en détail ailleurs sur ce site — cette page se concentre juste sur le pourquoi.",
+    tryDemo: "Essayer la démo",
+    seePricing: "Voir les tarifs",
+  },
+  howItWorks: {
+    tag: "Comment ça marche",
+    heading:
+      "De « je ne sais pas par où commencer » à une certification que vous pouvez montrer.",
+    subhead:
+      "Cinq étapes, chacune assez courte pour tenir dans une pause déjeuner — sans détours, sans jargon, sans avoir à tout comprendre seul.",
+    step1Title: "Choisissez votre rôle",
+    step1Body:
+      "Choisissez votre fonction — Finance, Opérations commerciales, Succès client, Opérations, et plus. Tout ce qui suit est construit autour de votre travail réel, pas d'un « AI 101 » générique.",
+    step2Title: "Voyez votre écart, pas un catalogue",
+    step2Body:
+      "OnRamp compare ce que vous avez déjà terminé sur LinkedIn Learning ou le LMS de votre entreprise avec ce que votre rôle exige réellement, et vous montre exactement quel(s) cours comble(nt) l'écart — pas quarante parmi lesquels deviner.",
+    step3Title: "Entraînez-vous avec Prompt Coach",
+    step3Body:
+      "Un guide patient et sans jugement vous aide à écrire votre premier prompt réel pour votre travail, et vous montre un brouillon utilisable en quelques minutes — personne ne regarde, aucune mauvaise façon de demander.",
+    step4Title: "Prouvez-le, ne le regardez pas seulement",
+    step4Body:
+      "L'évaluation de compétence vous propose un scénario réel et désordonné de votre rôle. Vous utilisez l'IA pour le traiter, puis montrez ce que vous vérifieriez avant d'y faire confiance — c'est ce qu'un badge de complétion ne demande jamais.",
+    step5Title: "Certifiez-vous — et faites-vous remarquer",
+    step5Body:
+      "Obtenez une certification réelle et partageable dès que vous démontrez la compétence, avec une visibilité que votre manager peut voir sans que vous ayez à l'annoncer vous-même.",
+    tryDemo: "Essayer la démo",
+    seeServices: "Voir ce qui est inclus",
+  },
+  services: {
+    tag: "Ce qui est inclus",
+    heading:
+      "Tout ce qu'il faut pour passer de l'incertitude à la certification — rien à construire vous-même.",
+    subhead:
+      "OnRamp n'est pas une bibliothèque de cours. C'est la couche qui rend enfin utilisables, rôle par rôle, les formations et outils que votre entreprise possède déjà.",
+    svc1Title: "Parcours d'apprentissage par rôle",
+    svc1Body:
+      "Des cas d'usage IA sélectionnés et spécifiques au poste — puisés dans votre catalogue LinkedIn Learning ou LMS existant — associés à votre fonction, pas une bibliothèque générique à parcourir vous-même.",
+    svc2Title: "Prompt Coach",
+    svc2Body:
+      "Un parcours guidé de première utilisation qui transforme « je ne sais pas comment demander » en un brouillon utilisable en quelques minutes, avec un raisonnement en langage clair pour que vous développiez la compétence, pas seulement une réponse.",
+    svc3Title: "Évaluation de compétence et certification",
+    svc3Body:
+      "Un scénario réel, évalué selon une grille — la preuve que vous savez faire le travail avec l'IA, pas la preuve que vous avez regardé une vidéo. Les certifications sont des identifiants partageables, prêts pour LinkedIn.",
+    svc4Title: "Cartographie des écarts sur ce que vous possédez déjà",
+    svc4Body:
+      "Se connecte à LinkedIn Learning ou au LMS de votre entreprise, montre ce qui est déjà couvert et vous indique exactement ce qui manque — pour que rien ne soit dupliqué ni deviné.",
+    svc5Title: "Tableau de bord managers et L&D",
+    svc5Body:
+      "Une vue consolidée unique des inscriptions, complétions et certifications sur toutes les sources de formation connectées — au lieu d'un rapport séparé par outil.",
+    svc6Title: "Communauté",
+    svc6Body:
+      "Un espace sans jugement pour voir comment des personnes dans des rôles similaires utilisent réellement l'IA au quotidien — de vrais prompts, de vrais cas d'usage, sans pression de classement sauf si vous le choisissez.",
+    tryDemo: "Essayer la démo",
+    seePricing: "Voir les tarifs",
+  },
+  results: {
+    tag: "À quoi ressemble le progrès",
+    heading:
+      "Vous n'avez pas à tout changer du jour au lendemain. Voici le rythme réel.",
+    subhead:
+      "Chaque parcours suit la même trajectoire — de petites étapes autorisées qui s'accumulent, pas un saut que vous devez faire seul.",
+    phase1Range: "1 à 3 mois",
+    phase1Title: "Usage quotidien et confiant de l'IA dans votre travail réel",
+    phase1Body:
+      "Prompt Coach et votre parcours par rôle deviennent une partie normale de la journée de travail — rédiger des explications d'écarts, résumer, rapprocher, vérifier votre propre travail plus vite, sans vous demander si c'est autorisé.",
+    phase2Range: "3 à 6 mois",
+    phase2Title: "Construire votre premier agent",
+    phase2Body:
+      "Une fois l'usage quotidien devenu routinier, vous passez de demandes ponctuelles à l'IA à la mise en place d'un petit agent reproductible qui gère seul une partie précise de votre flux de travail — le moment où « j'utilise l'IA » devient « j'ai construit quelque chose ».",
+    phase3Range: "6 à 12 mois",
+    phase3Title: "Des agents avec des sous-agents — une vraie automatisation",
+    phase3Body:
+      "Votre agent commence à déléguer des parties du travail à ses propres sous-agents spécialisés — un flux de travail complet et orchestré, fonctionnant avec une supervision légère plutôt que vous ne fassiez chaque étape à la main. C'est le moment « mentionner comment j'ai utilisé l'IA pour résoudre un vrai problème » vers lequel tout le parcours est construit.",
     tryDemo: "Essayer la démo",
     seePricing: "Voir les tarifs",
   },
