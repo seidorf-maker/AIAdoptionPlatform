@@ -37,6 +37,9 @@ export function CompetenceAssessment({
   const [result, setResult] = useState<{ certified: boolean; text: string } | null>(
     mode === "preview" ? { certified: true, text: SAMPLE_RESULT } : null
   );
+  // True only while the textarea holds the built-in example answer, untouched.
+  // Any manual edit clears it (see the textarea onChange).
+  const [usedExample, setUsedExample] = useState(false);
 
   async function submit() {
     if (mode !== "live") return;
@@ -50,6 +53,19 @@ export function CompetenceAssessment({
     setLoading(true);
     setStatus({ text: "Assessing your work — judgment, not just wording…" });
     setResult(null);
+
+    // Offline demo mode: the built-in example answer is graded with a pre-baked
+    // result instead of a live (billed) Anthropic call, so the assessment can be
+    // demoed with no API credits. An answer the user types themselves still goes
+    // to the real API below.
+    if (usedExample) {
+      await new Promise((resolve) => setTimeout(resolve, 1100));
+      setResult({ certified: true, text: SAMPLE_RESULT });
+      setStatus(null);
+      setLoading(false);
+      return;
+    }
+
     try {
       const res = await fetch("/api/claude", {
         method: "POST",
@@ -96,7 +112,10 @@ export function CompetenceAssessment({
         <textarea
           id="assess-answer"
           value={answer}
-          onChange={(e) => setAnswer(e.target.value)}
+          onChange={(e) => {
+            setAnswer(e.target.value);
+            setUsedExample(false);
+          }}
           placeholder="Paste the draft you produced with AI, then list what you'd double-check or flag before sending it…"
           className="min-h-[130px] w-full resize-y rounded-lg border border-card-border bg-background px-3 py-2.5 text-sm outline-none focus-visible:border-accent"
         />
@@ -113,6 +132,17 @@ export function CompetenceAssessment({
             className="rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground transition-all duration-200 hover:brightness-110 hover:shadow-[0_0_0_1px_var(--accent),0_0_22px_-2px_var(--accent-glow)] active:brightness-95 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:brightness-100 disabled:hover:shadow-none"
           >
             {loading ? "Assessing…" : "Submit for assessment"}
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              if (mode !== "live") return;
+              setAnswer(SAMPLE_ANSWER);
+              setUsedExample(true);
+            }}
+            className="rounded-lg border border-card-border px-3.5 py-2 text-sm text-muted-foreground hover:border-accent hover:text-accent"
+          >
+            Try an example answer
           </button>
           <button
             type="button"

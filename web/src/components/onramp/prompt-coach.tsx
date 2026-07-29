@@ -44,6 +44,9 @@ export function PromptCoach({
     null
   );
   const [loading, setLoading] = useState(false);
+  // True only while the textarea holds the built-in "Try an example" task,
+  // untouched. Any manual edit clears it (see the textarea onChange).
+  const [usedExample, setUsedExample] = useState(false);
 
   async function coach() {
     if (mode !== "live") return;
@@ -54,6 +57,19 @@ export function PromptCoach({
     setLoading(true);
     setStatus({ text: "Thinking it through with you…" });
     setOutput("");
+
+    // Offline demo mode: the built-in "Try an example" task serves a pre-baked
+    // response instead of a live (billed) Anthropic call, so the coach can be
+    // demoed with no API credits. A task the user types themselves still goes
+    // to the real API below.
+    if (usedExample) {
+      await new Promise((resolve) => setTimeout(resolve, 900));
+      setOutput(SAMPLE_RESPONSE);
+      setStatus(null);
+      setLoading(false);
+      return;
+    }
+
     try {
       const res = await fetch("/api/claude", {
         method: "POST",
@@ -82,7 +98,10 @@ export function PromptCoach({
       <textarea
         id="coach-task"
         value={task}
-        onChange={(e) => setTask(e.target.value)}
+        onChange={(e) => {
+          setTask(e.target.value);
+          setUsedExample(false);
+        }}
         placeholder="e.g. I need to write the variance explanation for our Q3 close and I don't know where to start"
         className="min-h-[130px] w-full resize-y rounded-lg border border-card-border bg-background px-3 py-2.5 text-sm outline-none focus-visible:border-accent"
       />
@@ -102,7 +121,11 @@ export function PromptCoach({
         </button>
         <button
           type="button"
-          onClick={() => mode === "live" && setTask(EXAMPLE_TASK)}
+          onClick={() => {
+            if (mode !== "live") return;
+            setTask(EXAMPLE_TASK);
+            setUsedExample(true);
+          }}
           className="rounded-lg border border-card-border px-3.5 py-2 text-sm text-muted-foreground hover:border-accent hover:text-accent"
         >
           Try an example
